@@ -1,0 +1,213 @@
+#############
+# Modifier
+	set $mod Mod1
+	floating_modifier $mod
+#
+#############
+# Font
+#
+	font pango: Font Awesome
+#
+#############
+# Borders
+#
+	hide_edge_borders smart
+
+	# Size
+	for_window [class="^.*"] border pixel 3
+	default_border pixel 3
+	default_floating_border pixel 3
+
+	# Colors
+	client.focused           #9aa5ce #364A82 #c0caf5 #9aa5ce  
+	client.focused_inactive  #16161d #16161d #c0caf5 #16161d  
+	client.unfocused         #16161d #16161d #c0caf5 #16161d 
+#
+#############
+# Gaps
+#
+	# smart_gaps on
+
+	# Size
+	gaps inner 5
+	gaps outer 2
+	gaps top 2
+	gaps bottom 2
+#
+#############
+# Workspaces
+#
+	set $editor "1"
+	set $terminal "2"
+	set $browser "3"
+	set $social "9"
+	set $music "10"
+
+	# Navigate
+	bindsym $mod+1 workspace $editor
+	bindsym $mod+2 workspace $terminal
+	bindsym $mod+3 workspace $browser
+	bindsym $mod+4 workspace 4
+	bindsym $mod+5 workspace 5
+	bindsym $mod+6 workspace 6
+	bindsym $mod+7 workspace 7
+	bindsym $mod+8 workspace 8
+	bindsym $mod+9 workspace $social
+	bindsym $mod+0 workspace $music
+
+	# Move
+	bindsym $mod+Shift+1 move container to workspace $editor
+	bindsym $mod+Shift+2 move container to workspace $terminal
+	bindsym $mod+Shift+3 move container to workspace $browser
+	bindsym $mod+Shift+4 move container to workspace 4
+	bindsym $mod+Shift+5 move container to workspace 5
+	bindsym $mod+Shift+6 move container to workspace 6
+	bindsym $mod+Shift+7 move container to workspace 7
+	bindsym $mod+Shift+8 move container to workspace 8
+	bindsym $mod+Shift+9 move container to workspace $social
+	bindsym $mod+Shift+0 move container to workspace $music
+
+	mode "move_workspace" {
+		bindsym h move workspace to output left
+		bindsym j move workspace to output down
+		bindsym k move workspace to output up
+		bindsym l move workspace to output right
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+	}
+	bindsym $mod+o mode "move_workspace"
+# 
+#############
+# Windows
+# 
+	# Quit
+	bindsym $mod+Shift+q kill
+
+	# Fullscreen
+	bindsym $mod+f fullscreen toggle
+
+	# Navigate
+	bindsym $mod+h focus left
+	bindsym $mod+j focus down
+	bindsym $mod+k focus up
+	bindsym $mod+l focus right
+
+	# Move
+	bindsym $mod+Shift+h move left
+	bindsym $mod+Shift+j move down
+	bindsym $mod+Shift+k move up
+	bindsym $mod+Shift+l move right
+
+	# Split
+	bindsym $mod+z split h
+	bindsym $mod+v split v
+
+	# Layout
+	bindsym $mod+s layout stacking
+	bindsym $mod+w layout tabbed
+	bindsym $mod+e layout toggle split
+	bindsym $mod+Shift+space floating toggle
+
+	# Resize
+	mode "resize" {
+		bindsym h resize shrink width 10 px or 10 ppt
+		bindsym j resize grow height 10 px or 10 ppt
+		bindsym k resize shrink height 10 px or 10 ppt
+		bindsym l resize grow width 10 px or 10 ppt
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+	}
+	bindsym $mod+r mode "resize"
+#
+#############
+# Keybindings
+#
+	# Reload configuration
+	bindsym $mod+Shift+c reload
+
+	# Restart i3
+	bindsym $mod+Shift+r restart
+
+	# Exit i3
+	bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+	# Program launcher
+	bindsym $mod+d exec rofi -no-config -dpi 192 -no-lazy-grab -show drun -modi drun -theme ~/.config/wofi/launcher.rasi
+
+	# Power menu
+	bindsym $mod+P exec ~/.config/wofi/wofi-power.sh
+
+	# Terminal
+	bindsym $mod+Return exec i3-sensible-terminal
+#
+#############
+# Monitors
+#
+	# External monitor
+	exec_always --no-startup-id xrandr --output DP-1-8 --scale 2x2
+
+	# Enable  laptop screen
+	bindsym $mod+Shift+n exec xrandr --output eDP-1 --auto
+
+	# Disable laptop screen
+	bindsym $mod+Shift+m exec xrandr --output eDP-1 --off
+#
+#############
+# Input
+#
+	# Touchpad
+	exec --no-startup-id xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
+	exec --no-startup-id xinput set-prop "$touchpad" "libinput Natural Scrolling Enabled" 1
+	exec --no-startup-id xinput set-prop "$touchpad" "libinput Disable While Typing Enabled" 0
+
+	# Audio
+	bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+	bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+	bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+	# Screen
+	bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+	bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+
+	# Media
+	bindsym XF86AudioPlay exec playerctl play
+	bindsym XF86AudioPause exec playerctl pause
+	bindsym XF86AudioNext exec playerctl next
+	bindsym XF86AudioPrev exec playerctl previous
+#
+#############
+#
+# Window rules
+#
+	for_window [class="Picture-in-picture"] floating enable
+
+	# Workspaces
+	# for_window [class="Google-chrome"] move workspace $browsers
+	for_window [class="Skype"] move workspace $social
+	for_window [class="Spotify"] move workspace $music
+	for_window [class="Blueman-manager"] move workspace $music
+#
+#############
+#
+# Launch
+#
+	# Editor
+	exec gnome-terminal -e tmux &
+
+	# Windows
+	exec google-chrome &
+	exec spotify --force-device-scale-factor=2 &
+	exec skypeforlinux &
+
+	# Tray
+	exec blueman-manager &
+	exec nm-applet & 
+	exec clipit &
+	
+	# Software
+	exec_always --no-startup-id autotiling &
+	exec_always ~/.config/polybar/launch.sh --grayblocks &
+#
+#############

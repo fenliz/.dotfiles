@@ -1,0 +1,9 @@
+# Resolution
+Xft.dpi: 192
+Rofi.dpi: 192
+
+# Font
+Xft.RGBA: rgb
+Xft.Hinting: 1
+Xft.HintStyle: hintslight
+Xtf.Antialias: 1
