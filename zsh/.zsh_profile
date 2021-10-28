@@ -1,0 +1,49 @@
+#############
+# Alias
+# 
+	alias vim=nvim
+#
+#############
+# Variables
+#
+	VIM='nvim'
+#
+#############
+# Environment variables
+#
+	export XDG_CONFIG_HOME=$HOME/.config
+	export GIT_EDITOR=$VIM
+
+	export DEVELOPMENT="$HOME/development"
+	export THIRD_PARTY="$HOME/third_party"
+	export DOTFILES="$HOME/.dotfiles"
+#
+#############
+# Path
+#
+	export PATH="$PATH:$HOME/.local/bin"
+#
+#############
+# Keybindings
+#
+	# Accept auto-completion
+	bindkey '^ ' autosuggest-accept
+
+	# Start project-selection script
+	bindkey -s ^f "tmux-sessionizer\n"
+
+	# In and out of VIM
+	zle -N resume_foreground
+	bindkey "^Z" resume_foreground
+#
+#############
+# Functions
+#
+	function resume_foreground {
+		fg
+		zle push-input
+		BUFFER=""
+		zle accept-line
+	}
+#
+#############
