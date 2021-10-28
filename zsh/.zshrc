@@ -30,7 +30,7 @@ plugins=(
   jsontools
 )
 
-# zstyle :omz:plugins:ssh-agent identities id_rsa id_rsa_gmail
+zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519
 
 source $ZSH/oh-my-zsh.sh
 # source $THIRD_PARTY/fzf-docker/docker-fzf
@@ -77,5 +77,3 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
