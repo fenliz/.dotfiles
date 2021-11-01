@@ -6,7 +6,7 @@
 #############
 # Font
 #
-	font pango: Font Awesome
+	font pango:CaskaydiaCove Nerd Font, Font Awesome 10
 #
 #############
 # Borders

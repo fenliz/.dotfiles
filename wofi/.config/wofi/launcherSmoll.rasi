@@ -1,5 +1,5 @@
 configuration {
-	font:							"Mononoki Nerd Font 10";
+	font:							"CaskaydiaCove Nerd Font 10";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";
