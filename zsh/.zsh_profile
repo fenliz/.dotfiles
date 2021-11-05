@@ -2,6 +2,7 @@
 # Alias
 # 
 	alias vim=nvim
+	alias la="ls -al"
 #
 #############
 # Variables

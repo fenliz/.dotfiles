@@ -1,0 +1,13 @@
+add_newline = false
+
+[git_branch]
+style = "bold bright-purple"
+
+[directory]
+style = "bold bright-blue"
+
+[git_status]
+style = "bold bright-red"
+
+[line_break]
+disabled = true

@@ -8,6 +8,7 @@ o.tabstop = 4
 o.softtabstop = 4
 o.shiftwidth = 4
 o.shiftround = true
+o.expandtab = true
 
 -- Smartly indent on new line
 o.smartindent = true

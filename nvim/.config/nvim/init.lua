@@ -18,5 +18,3 @@ require('navigation')
 require('problems')
 require('theme')
 require('text')
-
-require('custom_plugin')

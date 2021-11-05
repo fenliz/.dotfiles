@@ -184,8 +184,8 @@
 	for_window [class="Picture-in-picture"] floating enable
 
 	# Workspaces
-	# for_window [class="Google-chrome"] move workspace $browsers
 	for_window [class="Skype"] move workspace $social
+	for_window [class="Discord"] move workspace $social
 	for_window [class="Spotify"] move workspace $music
 	for_window [class="Blueman-manager"] move workspace $music
 #
@@ -197,9 +197,10 @@
 	exec gnome-terminal -e tmux &
 
 	# Windows
-	# exec google-chrome &
+	exec google-chrome &
 	exec spotify --force-device-scale-factor=2 &
 	exec skypeforlinux &
+	exec discord &
 
 	# Tray
 	exec blueman-manager &

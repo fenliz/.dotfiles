@@ -1,8 +1,6 @@
 local g = vim.g
 local wk = require('which-key')
 
-g.dap_virtual_text = true
-
 wk.register({
 	d = {
 		name = 'Debugging',
@@ -43,19 +41,21 @@ wk.register({
 local M = {}
 
 M.bootstrap = function()
-	local dap_install = require('dap-install')
-	local dbg_list = require('dap-install.core.debuggers_list').debuggers
+	local dapinstall = require('dap-install')
+	local debuggers = require('dap-install.core.debuggers_list').debuggers
 	local fn = vim.fn
 
-	for debugger, _ in pairs(dbg_list) do
+	for debugger, _ in pairs(debuggers) do
 		local config = {}
 
 		if debugger == 'jsnode_dbg' then
 			require('debugging.javascript').extend_config(config)
 		end
 
-		dap_install.config(debugger, config)
+		dapinstall.config(debugger, config)
 	end
+
+    require('nvim-dap-virtual-text').setup()
 
 	fn.sign_define('DapBreakpoint', {text='🔸', texthl='', linehl='', numhl=''})
 	fn.sign_define('DapBreakpointRejected', {text='🔹', texthl='', linehl='', numhl=''})

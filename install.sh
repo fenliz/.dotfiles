@@ -6,6 +6,7 @@ declare -a arr=(
   "i3"
   "nvim"
   "polybar"
+  "starship"
   "tmux"
   "Xresources"
   "zsh"

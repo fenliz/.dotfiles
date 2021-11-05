@@ -7,15 +7,6 @@ g.nvim_tree_indent_markers = 1
 -- Ignore git-ignored files
 g.nvim_tree_gitignore = 1
 
--- Set root node (workspace) name
-g.nvim_tree_root_folder_modifier = ':t'
-
--- Show error/warnings in files
-g.nvim_tree_lsp_diagnostics = 1
-
--- Files to highlight
-g.nvim_tree_special_files = {}
-
 -- Don't choose what window to open in (if multiple is opened)
 -- g.nvim_tree_disable_window_picker = 1
 
@@ -41,13 +32,12 @@ M.bootstrap = function()
 	local nvim_tree_cb = require('nvim-tree.config').nvim_tree_callback
 
 	nvim_tree.setup({
-		-- open_on_setup = true,
-
+        diagnostics = { enable = true },
 		update_focused_file = { enable = true },
-
 		view = {
 			width = 30,
 			auto_resize = true,
+            hide_root_folder = true,
 			mappings = {
 				list = {
 					{ key = 't', cb = nvim_tree_cb('tabnew') },

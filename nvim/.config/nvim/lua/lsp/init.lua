@@ -147,11 +147,11 @@ M.bootstrap = function()
 			require('lsp.json').extend_config(config)
 		end
 
-		require('lsp.csharp')
 
 		lspconfig[server].setup(config)
 	end
 
+	require('lsp.csharp')
 	require('lsp.null-ls').setup(on_attach)
 
 	-- Automatically reload after a `:LspInstall <server>`
