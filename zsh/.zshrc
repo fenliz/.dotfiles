@@ -2,7 +2,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-[[ -f $HOME/.zshrc.local ]] || source $HOME/.zshrc.local
+[[ ! -f $HOME/.zshrc.local ]] || source $HOME/.zshrc.local
 source $HOME/.zsh_profile
 
 export DEFAULT_USER="$(whoami)"
@@ -20,14 +20,9 @@ plugins=(
   jsontools
 )
 
-zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519
+zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519 id_rsa_hq
 
 source $ZSH/oh-my-zsh.sh
-
-# Disable ALT+{0-9} (readline arguments)
-# for i in - {0..9} ; do
-# 	bindkey -r '\e'$i
-# done
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet

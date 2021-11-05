@@ -29,7 +29,7 @@
 	# smart_gaps on
 
 	# Size
-	gaps inner 5
+	gaps inner 4
 	gaps outer 2
 	gaps top 2
 	gaps bottom 2
@@ -140,7 +140,7 @@
 	bindsym $mod+P exec ~/.config/wofi/wofi-power.sh
 
 	# Terminal
-	bindsym $mod+Return exec i3-sensible-terminal
+	bindsym $mod+Return exec alacritty
 #
 #############
 # Monitors
@@ -197,7 +197,7 @@
 	exec gnome-terminal -e tmux &
 
 	# Windows
-	exec google-chrome &
+	# exec google-chrome &
 	exec spotify --force-device-scale-factor=2 &
 	exec skypeforlinux &
 
@@ -208,6 +208,6 @@
 	
 	# Software
 	exec_always --no-startup-id autotiling &
-	exec_always ~/.config/polybar/launch.sh --grayblocks &
+	exec_always ~/.config/polybar/start.sh &
 #
 #############
