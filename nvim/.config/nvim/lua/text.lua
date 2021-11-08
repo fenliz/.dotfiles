@@ -44,14 +44,14 @@ utils.map('n', '<leader>d', '"_d')
 utils.map('v', '<leader>d', '"_d')
 
 -- Copy to system clipboard
-utils.map('n', '<leader>y', '"*y')
-utils.map('v', '<leader>y', '"*y')
+utils.map('n', '<leader>y', '"+y')
+utils.map('v', '<leader>y', '"+y')
 
 -- Copy file to system clipboard
 utils.map('n', '<leader>Y', 'gg"+yG')
 
 -- Paste from system clipboard
-utils.map('n', '<leader>p', '"*p')
+utils.map('n', '<leader>p', '"+p')
 
 -- Replace-paste keeping content in the paste-buffer
 utils.map('v', '<leader>p', '"_dP')

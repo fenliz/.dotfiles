@@ -8,3 +8,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # Starship
 eval "$(starship init zsh)" 
+
+source ~/third_party/zsh-autosuggestions/zsh-autosuggestions.zsh

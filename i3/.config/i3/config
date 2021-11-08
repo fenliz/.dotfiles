@@ -1,5 +1,6 @@
 #############
 # Modifier
+#
 	set $mod Mod1
 	floating_modifier $mod
 #
@@ -29,10 +30,10 @@
 	# smart_gaps on
 
 	# Size
-	gaps inner 4
-	gaps outer 2
-	gaps top 2
-	gaps bottom 2
+	# gaps inner 4
+	# gaps outer 2
+	# gaps top 2
+	# gaps bottom 2
 #
 #############
 # Workspaces
@@ -185,7 +186,7 @@
 
 	# Workspaces
 	for_window [class="Skype"] move workspace $social
-	for_window [class="Discord"] move workspace $social
+	for_window [class="discord"] move workspace $social
 	for_window [class="Spotify"] move workspace $music
 	for_window [class="Blueman-manager"] move workspace $music
 #
@@ -193,9 +194,6 @@
 #
 # Launch
 #
-	# Editor
-	exec gnome-terminal -e tmux &
-
 	# Windows
 	exec google-chrome &
 	exec spotify --force-device-scale-factor=2 &
