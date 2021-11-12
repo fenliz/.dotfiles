@@ -1,5 +1,5 @@
 [[ ! -f $HOME/.zshrc.local ]] || source $HOME/.zshrc.local
-source $HOME/.zsh_profile
+# source $HOME/.zsh_profile
 
 # NVM
 export NVM_DIR="$HOME/.nvm"

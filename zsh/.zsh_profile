@@ -3,9 +3,7 @@
 # 
 	alias vim=nvim
 	alias la="ls -al"
-
-    # Change directory to git repository root
-    alias cdr="cd `git rev-parse --show-toplevel`"
+    alias cdr='cd $(git rev-parse --show-toplevel)'
 #
 #############
 # Variables

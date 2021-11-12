@@ -5,9 +5,11 @@
 	floating_modifier $mod
 #
 #############
-# Font
+# Settings
 #
 	font pango:CaskaydiaCove Nerd Font, Font Awesome 10
+
+    focus_follows_mouse no
 #
 #############
 # Borders
@@ -30,10 +32,10 @@
 	# smart_gaps on
 
 	# Size
-	# gaps inner 4
-	# gaps outer 2
-	# gaps top 2
-	# gaps bottom 2
+	gaps inner 4
+	gaps outer 2
+	gaps top 2
+	gaps bottom 2
 #
 #############
 # Workspaces
@@ -164,17 +166,16 @@
 	exec --no-startup-id xinput set-prop "$touchpad" "libinput Disable While Typing Enabled" 0
 
 	# Audio
-	bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-	bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-	bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+	bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+	bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+	bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 	# Screen
-	bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-	bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+    bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+    bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 	# Media
-	bindsym XF86AudioPlay exec playerctl play
-	bindsym XF86AudioPause exec playerctl pause
+	bindsym XF86AudioPlay exec playerctl play-pause
 	bindsym XF86AudioNext exec playerctl next
 	bindsym XF86AudioPrev exec playerctl previous
 #
