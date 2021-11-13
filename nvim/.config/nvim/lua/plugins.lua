@@ -127,6 +127,9 @@ local function plugins(use)
 
 	-- Indentation guides
 	use({ 'lukas-reineke/indent-blankline.nvim' })
+
+    -- Common Navigation for vim and tmux
+    use({ 'christoomey/vim-tmux-navigator' })
 end
 
 return packer.setup(config, plugins)
