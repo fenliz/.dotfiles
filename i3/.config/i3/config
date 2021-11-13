@@ -32,7 +32,7 @@
 	# smart_gaps on
 
 	# Size
-	gaps inner 4
+	gaps inner 12
 	gaps outer 2
 	gaps top 2
 	gaps bottom 2
@@ -195,9 +195,17 @@
 #
 # Launch
 #
-	# Windows
-	exec google-chrome &
+    # Theme
+	exec_always ~/.config/polybar/start.sh &
+    exec --no-startup-id xsetroot -solid "#16161d"
+
+	# Browser
+    exec --no-startup-id i3-msg 'workspace $browser; exec /usr/bin/google-chrome'
+
+    # Music
 	exec spotify --force-device-scale-factor=2 &
+
+    # Social
 	exec skypeforlinux &
 	exec discord &
 
@@ -205,9 +213,8 @@
 	exec blueman-manager &
 	exec nm-applet & 
 	exec clipit &
-	
-	# Software
+
+	# Scripts
 	exec_always --no-startup-id autotiling &
-	exec_always ~/.config/polybar/start.sh &
 #
 #############
