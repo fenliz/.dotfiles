@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 declare -a arr=(
+  "autorandr"
   "git"
   "gtk"
   "i3"
@@ -8,6 +9,7 @@ declare -a arr=(
   "polybar"
   "starship"
   "tmux"
+  "wofi"
   "Xresources"
   "zsh"
 )

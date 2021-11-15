@@ -133,9 +133,6 @@
 	# Restart i3
 	bindsym $mod+Shift+r restart
 
-	# Exit i3
-	bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
 	# Program launcher
 	bindsym $mod+d exec rofi -no-config -dpi 192 -no-lazy-grab -show drun -modi drun -theme ~/.config/wofi/launcher.rasi
 
@@ -149,13 +146,13 @@
 # Monitors
 #
 	# External monitor
-	exec_always --no-startup-id xrandr --output DP-1-8 --scale 2x2
+	# exec_always --no-startup-id xrandr --output DP-1-1-8 --scale 2x2
 
 	# Enable  laptop screen
-	bindsym $mod+Shift+n exec xrandr --output eDP-1 --auto
+	bindsym $mod+Shift+n exec xrandr --output eDP-1-1 --auto
 
 	# Disable laptop screen
-	bindsym $mod+Shift+m exec xrandr --output eDP-1 --off
+	bindsym $mod+Shift+m exec xrandr --output eDP-1-1 --off
 #
 #############
 # Input
@@ -200,7 +197,7 @@
     exec --no-startup-id xsetroot -solid "#16161d"
 
 	# Browser
-    exec --no-startup-id i3-msg 'workspace $browser; exec /usr/bin/google-chrome'
+    exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/google-chrome'
 
     # Music
 	exec spotify --force-device-scale-factor=2 &
