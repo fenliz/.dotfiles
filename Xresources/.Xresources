@@ -1,6 +1,5 @@
 # Resolution
-Xft.dpi: 192
-Rofi.dpi: 192
+Xft.dpi: 120
 
 # Font
 Xft.RGBA: rgb

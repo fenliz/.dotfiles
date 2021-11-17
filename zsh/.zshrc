@@ -1,5 +1,5 @@
 [[ ! -f $HOME/.zshrc.local ]] || source $HOME/.zshrc.local
-# source $HOME/.zsh_profile
+source $HOME/.zsh_profile
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -10,3 +10,5 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(starship init zsh)" 
 
 source ~/third_party/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

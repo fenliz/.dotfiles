@@ -29,8 +29,6 @@
 #############
 # Gaps
 #
-	# smart_gaps on
-
 	# Size
 	gaps inner 12
 	gaps outer 2
@@ -41,15 +39,14 @@
 # Workspaces
 #
 	set $editor "1"
-	set $terminal "2"
-	set $browser "3"
+	set $browser "2"
 	set $social "9"
 	set $music "10"
 
 	# Navigate
 	bindsym $mod+1 workspace $editor
-	bindsym $mod+2 workspace $terminal
-	bindsym $mod+3 workspace $browser
+	bindsym $mod+2 workspace $browser
+	bindsym $mod+3 workspace 3
 	bindsym $mod+4 workspace 4
 	bindsym $mod+5 workspace 5
 	bindsym $mod+6 workspace 6
@@ -60,8 +57,8 @@
 
 	# Move
 	bindsym $mod+Shift+1 move container to workspace $editor
-	bindsym $mod+Shift+2 move container to workspace $terminal
-	bindsym $mod+Shift+3 move container to workspace $browser
+	bindsym $mod+Shift+2 move container to workspace $browser
+	bindsym $mod+Shift+3 move container to workspace 3
 	bindsym $mod+Shift+4 move container to workspace 4
 	bindsym $mod+Shift+5 move container to workspace 5
 	bindsym $mod+Shift+6 move container to workspace 6
@@ -134,25 +131,13 @@
 	bindsym $mod+Shift+r restart
 
 	# Program launcher
-	bindsym $mod+d exec rofi -no-config -dpi 192 -no-lazy-grab -show drun -modi drun -theme ~/.config/wofi/launcher.rasi
+	bindsym $mod+d exec rofi -no-config -dpi 120 -no-lazy-grab -show drun -modi drun -theme ~/.config/wofi/launcher.rasi
 
 	# Power menu
 	bindsym $mod+P exec ~/.config/wofi/wofi-power.sh
 
 	# Terminal
 	bindsym $mod+Return exec alacritty
-#
-#############
-# Monitors
-#
-	# External monitor
-	# exec_always --no-startup-id xrandr --output DP-1-1-8 --scale 2x2
-
-	# Enable  laptop screen
-	bindsym $mod+Shift+n exec xrandr --output eDP-1-1 --auto
-
-	# Disable laptop screen
-	bindsym $mod+Shift+m exec xrandr --output eDP-1-1 --off
 #
 #############
 # Input
@@ -182,9 +167,11 @@
 #
 	for_window [class="Picture-in-picture"] floating enable
 
-	# Workspaces
+	# Social
 	for_window [class="Skype"] move workspace $social
 	for_window [class="discord"] move workspace $social
+
+    # Music
 	for_window [class="Spotify"] move workspace $music
 	for_window [class="Blueman-manager"] move workspace $music
 #
@@ -196,8 +183,11 @@
 	exec_always ~/.config/polybar/start.sh &
     exec --no-startup-id xsetroot -solid "#16161d"
 
+	# Editor / Terminal
+    exec --no-startup-id i3-msg 'workspace 1; exec alacritty -e tmux'
+
 	# Browser
-    exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/google-chrome'
+    exec --no-startup-id i3-msg 'workspace 2; exec google-chrome'
 
     # Music
 	exec spotify --force-device-scale-factor=2 &
