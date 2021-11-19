@@ -203,5 +203,6 @@
 
 	# Scripts
 	exec_always --no-startup-id autotiling &
+    exec --no-startup-id autorandr --change &
 #
 #############
