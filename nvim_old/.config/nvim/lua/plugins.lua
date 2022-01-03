@@ -1,21 +1,29 @@
 local packer = require('utils.packer')
 
+-- require('impatient');
+
 local config = {
 	display = {
+        -- Enable impatient.nvim to cache lua dir
+        compile_path = vim.fn.stdpath('config')..'/lua/packer-compiled.lua',
+
 		open_fn = function()
-      return require("packer.util").float({ border = "single" })
-    end,
-  },
+            return require("packer.util").float({ border = "single" })
+        end,
+    },
 }
 
 local function plugins(use)
 	-- Package manager
 	use({ 'wbthomason/packer.nvim', opt = true })
 
+    -- Speed up startup
+    -- use({ 'lewis6991/impatient.nvim' })
+
 	-- Language server
 	use({ 'neovim/nvim-lspconfig',
 		requires = {
-			'kabouzeid/nvim-lspinstall',
+			'williamboman/nvim-lsp-installer',
 			'nvim-lua/plenary.nvim',
 			'jose-elias-alvarez/null-ls.nvim',
 			'ray-x/lsp_signature.nvim',
@@ -52,6 +60,7 @@ local function plugins(use)
 			'hrsh7th/cmp-nvim-lsp',
 			'L3MON4D3/LuaSnip',
 			'saadparwaiz1/cmp_luasnip',
+            'windwp/nvim-autopairs',
 		},
 		config = function() require('completion').bootstrap() end
 	})
@@ -87,6 +96,12 @@ local function plugins(use)
 		config = function() require('debugging').bootstrap() end
 	})
 
+    -- UI tweaks
+    use({ 'stevearc/dressing.nvim' })
+
+    -- Github Copilot
+    use({ 'github/copilot.vim' });
+
 	-- Testing
 	-- use({ 'rcarriga/vim-ultest',
 	-- 	requires = 'vim-test/vim-test',
@@ -115,9 +130,6 @@ local function plugins(use)
 
 	-- Navigation
 	use({ 'ggandor/lightspeed.nvim' })
-
-	-- Editorconfig
-	use({ 'sgur/vim-editorconfig' })
 
 	-- Comments
 	use({ 'tpope/vim-commentary' })

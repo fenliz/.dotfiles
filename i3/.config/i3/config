@@ -14,23 +14,21 @@
 #############
 # Borders
 #
-	hide_edge_borders smart
-
 	# Size
-	for_window [class="^.*"] border pixel 3
-	default_border pixel 3
-	default_floating_border pixel 3
+	for_window [class="^.*"] border pixel 2
+	default_border pixel 2
+	default_floating_border pixel 2
 
-	# Colors
-	client.focused           #9aa5ce #364A82 #c0caf5 #9aa5ce  
-	client.focused_inactive  #16161d #16161d #c0caf5 #16161d  
-	client.unfocused         #16161d #16161d #c0caf5 #16161d 
+	# Colors                 border  bg      text    indicator
+	client.focused           #9aa5ce #9aa5ce #9aa5ce #9aa5ce 
+	client.focused_inactive  #333333 #333333 #333333 #333333 
+	client.unfocused         #333333 #333333 #333333 #333333
 #
 #############
 # Gaps
 #
 	# Size
-	gaps inner 12
+	gaps inner 6
 	gaps outer 2
 	gaps top 2
 	gaps bottom 2
@@ -40,13 +38,14 @@
 #
 	set $editor "1"
 	set $browser "2"
+	set $misc "3"
 	set $social "9"
 	set $music "10"
 
 	# Navigate
 	bindsym $mod+1 workspace $editor
 	bindsym $mod+2 workspace $browser
-	bindsym $mod+3 workspace 3
+	bindsym $mod+3 workspace $misc
 	bindsym $mod+4 workspace 4
 	bindsym $mod+5 workspace 5
 	bindsym $mod+6 workspace 6
@@ -55,10 +54,16 @@
 	bindsym $mod+9 workspace $social
 	bindsym $mod+0 workspace $music
 
+    workspace $editor output primary
+    workspace $browser output primary
+    workspace $misc output secondary
+    workspace $social output secondary
+    workspace $music output secondary
+
 	# Move
 	bindsym $mod+Shift+1 move container to workspace $editor
 	bindsym $mod+Shift+2 move container to workspace $browser
-	bindsym $mod+Shift+3 move container to workspace 3
+	bindsym $mod+Shift+3 move container to workspace $misc
 	bindsym $mod+Shift+4 move container to workspace 4
 	bindsym $mod+Shift+5 move container to workspace 5
 	bindsym $mod+Shift+6 move container to workspace 6
@@ -190,7 +195,7 @@
     exec --no-startup-id i3-msg 'workspace 2; exec google-chrome'
 
     # Music
-	exec spotify --force-device-scale-factor=2 &
+	exec spotify &
 
     # Social
 	exec skypeforlinux &
@@ -200,6 +205,7 @@
 	exec blueman-manager &
 	exec nm-applet & 
 	exec clipit &
+    exec flameshot &
 
 	# Scripts
 	exec_always --no-startup-id autotiling &

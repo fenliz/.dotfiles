@@ -17,5 +17,5 @@ o.splitbelow = true
 utils.nmap('<Backspace>', '<C-^>')
 
 -- Buffer navigation
-utils.nmap('<Tab>', ':BufferLineCycleNext<CR>')
-utils.nmap('<S-Tab>', ':BufferLineCyclePrev<CR>')
+-- utils.nmap('<Tab>', ':BufferLineCycleNext<CR>')
+-- utils.nmap('<S-Tab>', ':BufferLineCyclePrev<CR>')

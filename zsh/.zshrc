@@ -11,4 +11,8 @@ eval "$(starship init zsh)"
 
 source ~/third_party/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# forgit
+[ -f ~/third_party/forgit/forgit.plugin.zsh ] && source ~/third_party/forgit/forgit.plugin.zsh

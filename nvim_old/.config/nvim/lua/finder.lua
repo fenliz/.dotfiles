@@ -50,7 +50,7 @@ M.bootstrap = function()
 				i = { ['<ESC>'] = actions.close },
 				n = { ['<ESC>'] = actions.close }
 			},
-		}
+		},
 	})
 end
 

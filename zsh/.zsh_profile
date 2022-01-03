@@ -2,8 +2,9 @@
 # Alias
 # 
 	alias vim=nvim
+	alias nv=nvim
 	alias la="ls -al"
-    alias cdr='cd $(git rev-parse --show-toplevel)'
+    	alias cdr='cd $(git rev-parse --show-toplevel)'
 #
 #############
 # Variables

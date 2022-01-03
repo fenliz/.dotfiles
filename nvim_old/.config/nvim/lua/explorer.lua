@@ -4,12 +4,6 @@ local g = vim.g
 -- Show indent markers
 g.nvim_tree_indent_markers = 1
 
--- Ignore git-ignored files
-g.nvim_tree_gitignore = 1
-
--- Don't choose what window to open in (if multiple is opened)
--- g.nvim_tree_disable_window_picker = 1
-
 g.nvim_tree_show_icons = {
 	git = 0,
 	folders = 1,
@@ -45,7 +39,12 @@ M.bootstrap = function()
 					{ key = 'h', cb = nvim_tree_cb('parent_node') },
 				}
 			}
-		}
+		},
+        git = {
+            enable = true,
+            ignore = true,
+            timeout = 500,
+        }
 	})
 end
 

@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 declare -a arr=(
+  "alacritty"
   "autorandr"
   "git"
   "gtk"

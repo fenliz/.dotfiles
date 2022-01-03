@@ -52,9 +52,9 @@ utils.nmap('<C-]>', ':lua vim.lsp.diagnostic.goto_next()<CR>')
 utils.nmap('<C-[>', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
 
 
-local on_attach = function(client, bufnr)
-	local function nmap(...) vim.api.nvim_buf_set_keymap(bufnr, 'n', ...) end
-	local function opt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+local on_attach = function(client, buf)
+	local function nmap(...) vim.api.nvim_buf_set_keymap(buf, 'n', ...) end
+	local function opt(...) vim.api.nvim_buf_set_option(buf, ...) end
 	local opts = { noremap = true, silent = true }
 
 	-- Set function to be used for auto-completion
@@ -125,41 +125,30 @@ end
 local M = {}
 
 M.bootstrap = function()
-	local lspconfig = require('lspconfig')
-	local lspinstall = require('lspinstall')
-	local lspsignature = require('lsp_signature')
+	local lsp_installer = require('nvim-lsp-installer')
+	local lsp_signature = require('lsp_signature')
 
-	lspinstall.setup()
+    lsp_installer.on_server_ready(function(server)
+	    local config = make_config()
 
-	local servers = lspinstall.installed_servers()
-	for _, server in pairs(servers) do
-		local config = make_config()
-
-		if server == 'lua'  then
+		if server.name == 'sumneko_lua'  then
 			require('lsp.lua').extend_config(config)
-		elseif server == 'php' then
+		elseif server.name == 'intelephense' then
 			require('lsp.php').extend_config(config)
-		elseif server == 'typescript' then
+		elseif server.name == 'tsserver' then
 			require('lsp.typescript').extend_config(config)
-		elseif server == 'html' then
+		elseif server.name == 'html' then
 			require('lsp.html').extend_config(config)
-		elseif server == 'json' then
+		elseif server.name == 'json' then
 			require('lsp.json').extend_config(config)
 		end
 
-
-		lspconfig[server].setup(config)
-	end
+        server:setup(config);
+    end)
 
 	require('lsp.null-ls').setup(on_attach)
 
-	-- Automatically reload after a `:LspInstall <server>`
-	lspinstall.post_install_hook = function()
-		M.bootstrap()
-		vim.cmd('bufdo e')
-	end
-
-	lspsignature.setup({
+	lsp_signature.setup({
 		hint_enable = false
 	})
 end
