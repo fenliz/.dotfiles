@@ -1,5 +1,6 @@
 nnoremap('<leader>cr', ':lua ReloadConfig()<CR>', '<silent>', 'Config: Reload')
 
+require'user.debugger.mappings'
 require'user.editor.mappings'
 require'user.file-explorer.mappings'
 require'user.fuzzy-finder.mappings'

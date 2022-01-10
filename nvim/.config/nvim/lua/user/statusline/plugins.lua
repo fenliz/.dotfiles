@@ -4,7 +4,14 @@ return function(use)
         config = function()
             require'lualine'.setup {
                 options = {
-                    theme = 'nightfox'
+                    theme = 'nightfox',
+                    disabled_filetypes = {
+                        'NvimTree',
+                        'dapui_scopes' ,
+                        'dapui_breakpoints' ,
+                        'dapui_stacks' ,
+                        'dapui_watches' ,
+                    }
                 }
             }
         end

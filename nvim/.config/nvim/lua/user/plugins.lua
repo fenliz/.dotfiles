@@ -85,7 +85,11 @@ return packer.startup(function(use)
 	use {
 		'rcarriga/nvim-notify',
 		config = function()
-			vim.notify = require('notify')
+			vim.notify = require'notify'
+            require'notify'.setup {
+                render = 'minimal',
+                timeout = 2000,
+            }
 		end
 	}
 
