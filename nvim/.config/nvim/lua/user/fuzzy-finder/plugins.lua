@@ -18,7 +18,7 @@ return function(use)
 	use {
 		'nvim-telescope/telescope.nvim',
         config = function()
-            require'telescope'.setup() 
+            require'telescope'.setup()
         end
 	}
 

@@ -118,6 +118,7 @@ return packer.startup(function(use)
     require'user.language-servers.plugins'(use)
     require'user.statusline.plugins'(use)
     require'user.syntax-parser.plugins'(use)
+    require'user.note-taking.plugins'(use)
     require'user.tabline.plugins'(use)
     require'user.version-control.plugins'(use)
 

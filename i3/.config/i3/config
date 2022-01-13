@@ -191,10 +191,10 @@
     exec --no-startup-id xsetroot -solid "#16161d"
 
 	# Editor / Terminal
-    exec --no-startup-id sh -c 'sleep 1; i3-msg "workspace 1; exec alacritty -e tmux"'
+    exec --no-startup-id sh -c 'sleep 2; i3-msg "workspace 1; exec alacritty -e tmux"'
 
 	# Browser
-    exec --no-startup-id sh -c 'sleep 2; i3-msg "workspace 2; exec google-chrome"'
+    exec --no-startup-id sh -c 'sleep 3; i3-msg "workspace 2; exec google-chrome"'
 
     # Music
 	exec spotify &
