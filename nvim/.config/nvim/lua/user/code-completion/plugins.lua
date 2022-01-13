@@ -30,7 +30,7 @@ return function(use)
                     { name = 'nvim_lsp' },
                     { name = 'nvim_lua' },
                     { name = 'luasnip' },
-                    { name = 'neorg' },
+                    { name = 'orgmode' },
                     { name = 'emoji' },
                     { name = 'buffer' },
                 },

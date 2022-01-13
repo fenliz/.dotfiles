@@ -1,24 +1,10 @@
 return function(use)
     use {
-        'nvim-neorg/neorg',
+        'nvim-orgmode/orgmode',
         config = function()
-            require'neorg'.setup {
-                load = {
-                    ['core.defaults'] = {},
-                    ['core.norg.concealer'] = {},
-                    ['core.norg.dirman'] = {
-                        config = {
-                            workspaces = {
-                                my_workspace = '~/neorg'
-                            }
-                        }
-                    },
-                    ['core.norg.completion'] = {
-                        config = {
-                            engine = 'nvim-cmp'
-                        }
-                    }
-                }
+            require'orgmode'.setup {
+                org_agenda_files = { '~/org/*' },
+                org_default_notes_file = '~/org/notes.org'
             }
         end
     }

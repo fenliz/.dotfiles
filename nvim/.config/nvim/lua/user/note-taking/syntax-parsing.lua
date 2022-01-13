@@ -1,27 +1,12 @@
 return function ()
     local parser_configs = require'nvim-treesitter.parsers'.get_parser_configs()
 
-    parser_configs.norg = {
+    parser_configs.org = {
         install_info = {
-            url = 'https://github.com/nvim-neorg/tree-sitter-norg',
-            files = { 'src/parser.c', 'src/scanner.cc' },
-            branch = 'main'
-        }
-    }
-
-    parser_configs.norg_meta = {
-        install_info = {
-            url = 'https://github.com/nvim-neorg/tree-sitter-norg-meta',
-            files = { 'src/parser.c' },
-            branch = 'main'
+            url = 'https://github.com/milisims/tree-sitter-org',
+            revision = 'f110024d539e676f25b72b7c80b0fd43c34264ef',
+            files = {'src/parser.c', 'src/scanner.cc'},
         },
-    }
-
-    parser_configs.norg_table = {
-        install_info = {
-            url = 'https://github.com/nvim-neorg/tree-sitter-norg-table',
-            files = { 'src/parser.c' },
-            branch = 'main'
-        },
+        filetype = 'org',
     }
 end

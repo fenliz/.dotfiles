@@ -22,7 +22,7 @@ return function(use)
             vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
             require'user.language-servers.diagnostics'
-            -- require'user.language-servers.configs.null-ls'
+            require'user.language-servers.configs.null-ls'
             require'lsp_signature'.setup { hint_enable = false }
 
             require'nvim-lsp-installer'.on_server_ready(function(server)
