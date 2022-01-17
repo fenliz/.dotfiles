@@ -17,4 +17,7 @@ return function(bufnr)
     keymap('n', 'gf', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     keymap('n', 'Ä', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     keymap('n', 'Ö', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+
+    -- Formatting
+    keymap('n', 'ga', '<cmd>lua vim.lsp.buf.formatting_sync(nil, 1000)<CR>', opts)
 end
