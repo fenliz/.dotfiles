@@ -35,7 +35,7 @@ return function(use)
 
                         -- require'illuminate'.on_attach(client)
                         if client.resolved_capabilities.document_formatting then
-                            vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)')
+                            -- vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)')
                         end
                     end
                 }

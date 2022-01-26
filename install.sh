@@ -7,10 +7,10 @@ declare -a arr=(
   "gtk"
   "i3"
   "nvim"
-  "polybar"
   "starship"
   "tmux"
-  "wofi"
+  "rofi"
+  "xinitrc"
   "Xresources"
   "zsh"
 )

@@ -70,14 +70,6 @@ return packer.startup(function(use)
 	-- File icons & colors
 	use 'kyazdani42/nvim-web-devicons'
 
-	-- Color theme
-	use {
-		'EdenEast/nightfox.nvim',
-		config = function()
-            require'nightfox'.load('nightfox')
-		end
-	}
-
     -- UI Tweaks
     use 'stevearc/dressing.nvim'
 
@@ -120,6 +112,7 @@ return packer.startup(function(use)
     require'user.syntax-parser.plugins'(use)
     require'user.note-taking.plugins'(use)
     require'user.tabline.plugins'(use)
+    require'user.theme.plugins'(use)
     require'user.version-control.plugins'(use)
 
 	if PACKER_BOOTSTRAP then

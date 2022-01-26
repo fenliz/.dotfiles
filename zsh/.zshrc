@@ -9,6 +9,13 @@ export NVM_DIR="$HOME/.nvm"
 # Starship
 eval "$(starship init zsh)" 
 
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+# Auto-complete
 source ~/third_party/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # fzf

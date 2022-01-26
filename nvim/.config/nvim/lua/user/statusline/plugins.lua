@@ -1,18 +1,9 @@
 return function(use)
     use {
-        'nvim-lualine/lualine.nvim',
+        'feline-nvim/feline.nvim',
         config = function()
-            require'lualine'.setup {
-                options = {
-                    theme = 'nightfox',
-                    disabled_filetypes = {
-                        'NvimTree',
-                        'dapui_scopes' ,
-                        'dapui_breakpoints' ,
-                        'dapui_stacks' ,
-                        'dapui_watches' ,
-                    }
-                }
+            require'feline'.setup {
+                components = require'catppuccin.core.integrations.feline'
             }
         end
     }

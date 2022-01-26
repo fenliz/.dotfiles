@@ -10,8 +10,7 @@ return function(use)
             vim.g.nvim_tree_quit_on_open = 1
 
             nvim_tree.setup {
-				update_focused_file = { enable = true },
-                diagnostics = {
+				update_focused_file = { 
                     enable = true
                 },
 				view = {

@@ -13,6 +13,8 @@ return function(use)
 
 			'L3MON4D3/LuaSnip',
 			'saadparwaiz1/cmp_luasnip',
+
+            'github/copilot.vim'
         },
         config = function()
             local cmp = require'cmp'
@@ -44,7 +46,7 @@ return function(use)
                     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-f>'] = cmp.mapping.scroll_docs(4),
                     ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-e>'] = cmp.mapping {
+                    ['<C-c>'] = cmp.mapping {
                         i = cmp.mapping.abort(),
                         c = cmp.mapping.close(),
                     },
