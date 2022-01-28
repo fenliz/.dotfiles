@@ -53,9 +53,9 @@ static const char *colors[][3]      = {
     [SchemeTag2]       = { red,     black,  black },
     [SchemeTag3]       = { orange,  black,  black },
     [SchemeTag4]       = { green,   black,  black },
-    [SchemeTag5]       = { pink,    black,  black },
+    [SchemeTag5]       = { red,    black,  black },
     [SchemeTag6]       = { orange,  black,  black },
-    [SchemeTag7]       = { red,     black,  black },
+    [SchemeTag7]       = { pink,     black,  black },
     [SchemeTag8]       = { blue,    black,  black },
     [SchemeTag9]       = { green,   black,  black },
     [SchemeLayout]     = { green,   black,  black }, 
@@ -64,7 +64,7 @@ static const char *colors[][3]      = {
     [SchemeBtnClose]   = { red,     black,  black }, 
 };
 
-static char *tags[] = {"󰅴", "󰊯", "_", "", "󰗃", "󰕃", "󰙯", "󰒯", "󰓇", };
+static char *tags[] = {"󰅴", "󰊯", "_", "_", "󰗃", "󰕃", "󰙯", "󰒯", "󰓇", };
 
 static const char* eww[]      = { "eww", "open" , "eww", NULL };
 
