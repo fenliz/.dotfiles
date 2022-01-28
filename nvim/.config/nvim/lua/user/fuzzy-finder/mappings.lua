@@ -22,6 +22,7 @@ nnoremap('<leader>fc', '<cmd>lua require"telescope.builtin".commands()<CR>', '<s
 nnoremap('<leader>fk', '<cmd>lua require"telescope.builtin".keymaps()<CR>', '<silent>', 'Find: Keymap')
 
 -- History
+nnoremap('<leader>fl', '<cmd>lua require"telescope.builtin".resume()<CR>', '<silent>', 'Find: Resume last search')
 nnoremap('<leader>fS', '<cmd>lua require"telescope.builtin".search_history()<CR>', '<silent>', 'Find: Search (History)');
 nnoremap('<leader>fC', '<cmd>lua require"telescope.builtin".command_history()<CR>', '<silent>', 'Find: Command (History)');
 nnoremap('<leader>fy', '<cmd>lua require"telescope".extensions.neoclip.default()<CR>', '<silent>', 'Find: Clipboard (History)')
