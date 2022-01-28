@@ -1,4 +1,7 @@
 #!/bin/sh
+
+picom &
+
 alacritty -e tmux &
 skypeforlinux &
 spotify &

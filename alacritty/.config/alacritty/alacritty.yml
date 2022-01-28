@@ -1,16 +1,10 @@
 font:
   normal:
-    family: CaskaydiaCove Nerd Font Mono
-    style: Light
-
+    family: JetBrains Mono Nerd Font Mono
   bold:
-    family: CaskaydiaCove Nerd Font Mono
-    style: Medium
-
+    family: JetBrains Mono Nerd Font Mono
   italic:
-    family: CaskaydiaCove Nerd Font Mono
-    style: "Light Italic"
-
+    family: JetBrains Mono Nerd Font Mono
   size: 10.0
 
 colors:

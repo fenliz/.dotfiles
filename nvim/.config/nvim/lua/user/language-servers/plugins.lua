@@ -8,7 +8,6 @@ return function(use)
             'RishabhRD/popfix',
             'RishabhRD/nvim-lsputils',
             'ray-x/lsp_signature.nvim',
-            'RRethy/vim-illuminate',
             'simrat39/rust-tools.nvim',
         },
         config = function()
@@ -33,9 +32,8 @@ return function(use)
                     on_attach = function(client, bufnr)
                         require'user.language-servers.buffer-mappings'(bufnr)
 
-                        -- require'illuminate'.on_attach(client)
                         if client.resolved_capabilities.document_formatting then
-                            -- vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)')
+                            vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()')
                         end
                     end
                 }
