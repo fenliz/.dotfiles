@@ -28,8 +28,9 @@ pkg_updates() {
 }
 
 battery() {
-	get_capacity=""
 	printf "^c$blue^   $(cat /sys/class/power_supply/BAT0/capacity)%%"
+
+    battery=$(cat /sys/class/power_supply/BAT0/capacity)
 }
 
 mem() {

@@ -18,8 +18,9 @@
     alias la='ls -A'
     alias l='ls -CF'
 
-    alias ...='../..'
-    alias ....='../../..'
+    alias ..='cd ..'
+    alias ...='cd ../..'
+    alias ....='cd ../../..'
     alias cdr='cd $(git rev-parse --show-toplevel)'
 #
 #############

@@ -1,14 +1,14 @@
 font:
   normal:
-    family: CaskaydiaCove Nerd Font
+    family: CaskaydiaCove Nerd Font Mono
     style: Light
 
   bold:
-    family: CaskaydiaCove Nerd Font
+    family: CaskaydiaCove Nerd Font Mono
     style: Medium
 
   italic:
-    family: CaskaydiaCove Nerd Font
+    family: CaskaydiaCove Nerd Font Mono
     style: "Light Italic"
 
   size: 10.0
