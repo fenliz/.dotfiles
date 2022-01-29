@@ -10,7 +10,7 @@ declare -a arr=(
   "starship"
   "tmux"
   "rofi"
-  "xinitrc"
+  "Xinitrc"
   "Xresources"
   "zsh"
 )

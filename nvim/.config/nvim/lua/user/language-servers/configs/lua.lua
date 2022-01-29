@@ -6,7 +6,7 @@ return function(opts)
                 path = vim.split(package.path, ':'),
             },
             diagnostics = {
-                globals = { 'vim', 'nnoremap', 'vnoremap', 'inoremap' },
+                globals = { 'vim', 'nnoremap', 'vnoremap', 'inoremap', 'tnoremap' },
             },
             workspace = {
                 library = {

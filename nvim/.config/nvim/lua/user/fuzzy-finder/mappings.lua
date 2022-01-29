@@ -14,8 +14,8 @@ nnoremap('<leader>fr', '<cmd>lua require"telescope.builtin".oldfiles()<CR>', '<s
 nnoremap('<leader>fd', '<cmd>lua require"user.fuzzy-finder.utils".find_dotfiles()<CR>', '<silent>', 'Find: File in .dotfiles')
 
 -- Registers
-nnoremap('<leader>fm', '<cmd>lua require"telescope.builtin".marks()<CR>', '<silent>', 'Find: Mark')
 nnoremap('<leader>fb', '<cmd>lua require"telescope.builtin".buffers()<CR>', '<silent>', 'Find: Buffer')
+nnoremap('<leader>fm', '<cmd>lua require"telescope.builtin".marks()<CR>', '<silent>', 'Find: Mark')
 
 -- Commands
 nnoremap('<leader>fc', '<cmd>lua require"telescope.builtin".commands()<CR>', '<silent>', 'Find: Command')
@@ -31,3 +31,10 @@ nnoremap('<leader>fn', '<cmd>lua require"telescope".extensions.notify.notify()<C
 -- Vim
 nnoremap('<leader>fh', '<cmd>lua require"telescope.builtin".help_tags()<CR>', '<silent>', 'Find: Help')
 nnoremap('<leader>fo', '<cmd>lua require"telescope.builtin".vim_options()<CR>', '<silent>', 'Find: Option')
+
+-- Harpoon
+mapx.nname('<leader>a', 'Harpoon')
+nnoremap('<leader>aa', '<cmd>lua require"harpoon.mark".add_file()<CR>', '<silent>', 'Harpoon: Add file')
+nnoremap('<leader>af', '<cmd>Telescope harpoon marks<CR>', '<silent>', 'Harpoon: Find');
+nnoremap('<leader>as', '<cmd>lua require"harpoon.term".gotoTerminal(1)<CR>', 'Harpoon: First terminal');
+nnoremap('<leader>ad', '<cmd>lua require"harpoon.term".gotoTerminal(2)<CR>', 'Harpoon: Second terminal');

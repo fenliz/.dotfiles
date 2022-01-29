@@ -8,6 +8,8 @@ return function(use)
             'RishabhRD/popfix',
             'RishabhRD/nvim-lsputils',
             'ray-x/lsp_signature.nvim',
+            'j-hui/fidget.nvim',
+
             'simrat39/rust-tools.nvim',
         },
         config = function()
@@ -22,20 +24,16 @@ return function(use)
 
             require'user.language-servers.diagnostics'
             require'user.language-servers.configs.null-ls'
+
             require'lsp_signature'.setup { hint_enable = false }
+            require'fidget'.setup {}
 
             require'nvim-lsp-installer'.on_server_ready(function(server)
                 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
                 local opts = {
                     capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities),
-                    on_attach = function(client, bufnr)
-                        require'user.language-servers.buffer-mappings'(bufnr)
-
-                        if client.resolved_capabilities.document_formatting then
-                            vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()')
-                        end
-                    end
+                    on_attach = require'user.language-servers.on_attach'
                 }
 
                 if server.name == 'sumneko_lua' then
