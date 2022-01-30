@@ -3,13 +3,6 @@ return function(use)
 		'nvim-telescope/telescope.nvim',
         config = function()
             require'telescope'.setup {
-                defaults = {
-                    layout_strategy = 'bottom_pane',
-                    layout_config = {
-                        height = 25,
-                        prompt_position = 'bottom'
-                    }
-                },
                 extensions = {
                     fzf = {
                         fuzzy = true,
