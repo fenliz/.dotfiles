@@ -3,6 +3,12 @@ return function(use)
         as = 'catppuccin',
         config = function()
             require'catppuccin'.setup {
+                styles = {
+                    comments = 'NONE',
+                    functions = 'NONE',
+                    keywords = 'NONE',
+                    variables = 'NONE',
+                },
                 integrations = {
                     neogit = true,
                     lightspeed = true

@@ -22,11 +22,11 @@ return function(client, bufnr)
             augroup END
         ]]
     end
-    keymap('n', 'ga', '<cmd>lua vim.lsp.buf.formatting_sync(nil, 1000)<CR>', opts)
+    keymap('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
     -- Actions
-    keymap('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    keymap('v', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    keymap('v', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     keymap('n', 'gr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
     -- Documentation/References
@@ -37,7 +37,12 @@ return function(client, bufnr)
     keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
     -- Diagnostics
-    keymap('n', 'gf', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+    vim.cmd [[
+        augroup LspDiagnostics
+            autocmd! * <buffer>
+            autocmd CursorHold,CursorHoldI <buffer> lua vim.diagnostic.open_float()
+        augroup END
+    ]]
     keymap('n', 'Ä', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     keymap('n', 'Ö', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 end

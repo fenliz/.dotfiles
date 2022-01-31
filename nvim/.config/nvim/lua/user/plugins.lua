@@ -46,7 +46,9 @@ vim.cmd [[
 packer.init {
 	display = {
 		open_fn = function()
-			return require('packer.util').float { border = 'rounded' }
+			return require('packer.util').float {
+                border = 'rounded'
+            }
 		end
 	}
 }
@@ -80,7 +82,7 @@ return packer.startup(function(use)
 			vim.notify = require'notify'
             require'notify'.setup {
                 render = 'minimal',
-                timeout = 2000,
+                timeout = 1000,
             }
 		end
 	}
@@ -90,7 +92,7 @@ return packer.startup(function(use)
 		'b0o/mapx.nvim',
 		requires = { 'folke/which-key.nvim' },
 		config = function()
-			require'mapx'.setup{
+			require'mapx'.setup {
 				global = 'force',
 				whichkey = true
 			}
