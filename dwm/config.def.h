@@ -133,7 +133,7 @@ static const Layout layouts[] = {
 
 static const char *term[]           = { "alacritty",                                                NULL };
 static const char *applauncher[]    = { "rofi",         "-show", "drun",                            NULL };
-static const char *powermenu[]      = { "/home/charlie.config/rofi/scripts/power-menu",             NULL };
+static const char *powermenu[]      = { "/home/charlie/.config/rofi/scripts/power-menu",            NULL };
 static const char *mediaplaypause[] = { "playerctl",    "play-pause",                               NULL };
 static const char *medianext[]      = { "playerctl",    "next",                                     NULL };
 static const char *mediaprevious[]  = { "playerctl",    "previous",                                 NULL };
@@ -141,9 +141,9 @@ static const char *mediaprevious[]  = { "playerctl",    "previous",             
 //FIX
 static const char *brightnessup[]   = { "brightnessctl",   "set +5%",                               NULL };
 static const char *brightnessdown[] = { "brightnessctl",   "set -5%",                               NULL };
-static const char *volumeup[]   = { "pactl", "set-sink-volume", "0", "+5%",     NULL };
-static const char *volumedown[] = { "pactl", "set-sink-volume", "0", "-5%",     NULL };
-static const char *volumetoggle[] = { "pactl", "set-sink-mute",   "0", "toggle",  NULL };
+static const char *volumeup[]       = { "pactl", "set-sink-volume", "0", "+5%",                     NULL };
+static const char *volumedown[]     = { "pactl", "set-sink-volume", "0", "-5%",                     NULL };
+static const char *volumetoggle[]   = { "pactl", "set-sink-mute",   "0", "toggle",                  NULL };
 
 static Key keys[] = {
     // Move between tags
