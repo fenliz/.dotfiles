@@ -34,11 +34,10 @@ nnoremap('<leader>fo', '<cmd>lua require"telescope.builtin".vim_options()<CR>', 
 
 -- Harpoon
 mapx.nname('<leader>a', 'Harpoon')
-nnoremap('<leader>aa', '<cmd>lua require"harpoon.mark".add_file()<CR>', '<silent>', 'Harpoon: Add file')
+nnoremap('<leader>aA', '<cmd>lua require"harpoon.mark".add_file()<CR>', '<silent>', 'Harpoon: Add file')
 nnoremap('<leader>af', '<cmd>Telescope harpoon marks<CR>', '<silent>', 'Harpoon: Find');
-nnoremap('<leader>as', '<cmd>lua require"harpoon.term".gotoTerminal(1)<CR>', 'Harpoon: First terminal');
-nnoremap('<leader>ad', '<cmd>lua require"harpoon.term".gotoTerminal(2)<CR>', 'Harpoon: Second terminal');
-nnoremap('<leader>a1', '<cmd>lua require"harpoon.ui".nav_file(1)<CR>', '<silent>');
-nnoremap('<leader>a2', '<cmd>lua require"harpoon.ui".nav_file(2)<CR>', '<silent>');
-nnoremap('<leader>a3', '<cmd>lua require"harpoon.ui".nav_file(3)<CR>', '<silent>');
-nnoremap('<leader>a4', '<cmd>lua require"harpoon.ui".nav_file(4)<CR>', '<silent>');
+nnoremap('<leader>aq', '<cmd>lua require"harpoon.term".gotoTerminal(1)<CR>', 'Harpoon: First terminal');
+nnoremap('<leader>aw', '<cmd>lua require"harpoon.term".gotoTerminal(2)<CR>', 'Harpoon: Second terminal');
+nnoremap('<leader>aa', '<cmd>lua require"harpoon.ui".nav_file(1)<CR>', '<silent>');
+nnoremap('<leader>as', '<cmd>lua require"harpoon.ui".nav_file(2)<CR>', '<silent>');
+nnoremap('<leader>ad', '<cmd>lua require"harpoon.ui".nav_file(3)<CR>', '<silent>');
