@@ -1,4 +1,3 @@
-
 return function(use)
     use {
         'hrsh7th/nvim-cmp',
@@ -8,13 +7,15 @@ return function(use)
             'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-nvim-lsp-document-symbol',
 
             'windwp/nvim-autopairs',
 
 			'L3MON4D3/LuaSnip',
 			'saadparwaiz1/cmp_luasnip',
-
-            'github/copilot.vim'
+            --
+            -- 'github/copilot.vim',
         },
         config = function()
             local cmp = require'cmp'
@@ -35,6 +36,7 @@ return function(use)
                     { name = 'orgmode' },
                     { name = 'emoji' },
                     { name = 'buffer' },
+                    { name = 'path' },
                 },
                 formatting = {
                     fields = { 'abbr', 'kind', 'menu' },
@@ -51,26 +53,26 @@ return function(use)
                         c = cmp.mapping.close(),
                     },
                     ['<CR>'] = cmp.mapping.confirm { select = true },
-        			-- ['<Tab>'] = cmp.mapping(function(fallback)
-           --              if cmp.visible() then
-           --                  cmp.select_next_item()
-        			-- 	elseif luasnip.expand_or_jumpable() then
-           --                  luasnip.expand_or_jump()
-        			-- 	elseif check_backspace() then
-           --                  cmp.complete()
-        			-- 	else
-        			-- 		fallback()
-        			-- 	end
-        			-- end, { 'i', 's' }),
-        			-- ['<S-Tab>'] = cmp.mapping(function(fallback)
-           --              if cmp.visible() then
-           --                  cmp.select_prev_item()
-        			-- 	elseif luasnip.jumpable(-1) then
-           --                  luasnip.jump(-1)
-        			-- 	else
-        			-- 		fallback()
-        			-- 	end
-        			-- end, { 'i', 's' }),
+        			['<Tab>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+        				elseif luasnip.expand_or_jumpable() then
+                            luasnip.expand_or_jump()
+        				elseif check_backspace() then
+                            cmp.complete()
+        				else
+        					fallback()
+        				end
+        			end, { 'i', 's' }),
+        			['<S-Tab>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+        				elseif luasnip.jumpable(-1) then
+                            luasnip.jump(-1)
+        				else
+        					fallback()
+        				end
+        			end, { 'i', 's' }),
                 },
                 snippet = {
                     expand = function(args)
@@ -79,7 +81,30 @@ return function(use)
                 },
             })
 
+            cmp.setup.cmdline(':', {
+                sources = {
+                    { name = 'cmdline' }
+                }
+            });
+
+            cmp.setup.cmdline('/', {
+                sources = cmp.config.sources({
+                    { name = 'nvim_Lsp_document_symbol' },
+                }, {
+                    { name = 'buffer' }
+                })
+            })
+
             require'user.code-completion.snippets'
         end
     }
+
+    --
+    -- use {
+    --     'gelguy/wilder.nvim',
+    --     run = ':UpdateRemotePlugins',
+    --     config = function()
+    --         require'config.wilder'.setup
+    --     end
+    -- }
 end

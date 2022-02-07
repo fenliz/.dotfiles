@@ -10,6 +10,7 @@ null_ls.setup {
         -- Diagnostics
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.diagnostics.jsonlint,
+        null_ls.builtins.diagnostics.codespell,
 
         -- Formatting
         null_ls.builtins.formatting.eslint_d,
