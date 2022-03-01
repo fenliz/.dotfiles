@@ -13,9 +13,10 @@ return function(use)
             'windwp/nvim-autopairs',
 
 			'L3MON4D3/LuaSnip',
+            'rafamadriz/friendly-snippets',
 			'saadparwaiz1/cmp_luasnip',
-            --
-            -- 'github/copilot.vim',
+
+            'github/copilot.vim',
         },
         config = function()
             local cmp = require'cmp'
@@ -23,10 +24,10 @@ return function(use)
 
             require'nvim-autopairs'.setup()
 
-            local check_backspace = function()
-                local col = vim.fn.col '.' - 1
-                return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
-            end
+            vim.g.copilot_no_tab_map = true
+            vim.g.copilot_assume_mapped = true
+            vim.g.copilot_tab_fallback = ""
+            vim.api.nvim_set_keymap('i', '<C-l>', 'copilot#Accept("<CR>")', {expr=true, silent=true})
 
             cmp.setup({
                 sources = {
@@ -54,24 +55,38 @@ return function(use)
                     },
                     ['<CR>'] = cmp.mapping.confirm { select = true },
         			['<Tab>'] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_next_item()
-        				elseif luasnip.expand_or_jumpable() then
+                        if luasnip.expand_or_jumpable() then
                             luasnip.expand_or_jump()
-        				elseif check_backspace() then
-                            cmp.complete()
-        				else
-        					fallback()
-        				end
+                        else
+                            fallback()
+                        end
+                        -- end
+           --              if cmp.visible() then
+           --                  cmp.select_next_item()
+        			-- 	elseif luasnip.expand_or_jumpable() then
+           --                  luasnip.expand_or_jump()
+           --              else
+           --                  local copilot_keys = vim.fn["copilot#Accept"]()
+           --                  if copilot_keys ~= "" then
+           --                      vim.api.nvim_feedkeys(copilot_keys, "i", true)
+           --                  else
+           --                      fallback()
+           --                  end
+        			-- 	end
         			end, { 'i', 's' }),
         			['<S-Tab>'] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_prev_item()
-        				elseif luasnip.jumpable(-1) then
+        				if luasnip.jumpable(-1) then
                             luasnip.jump(-1)
         				else
         					fallback()
         				end
+           --              if cmp.visible() then
+           --                  cmp.select_prev_item()
+        			-- 	elseif luasnip.jumpable(-1) then
+           --                  luasnip.jump(-1)
+        			-- 	else
+        			-- 		fallback()
+        			-- 	end
         			end, { 'i', 's' }),
                 },
                 snippet = {
@@ -98,13 +113,4 @@ return function(use)
             require'user.code-completion.snippets'
         end
     }
-
-    --
-    -- use {
-    --     'gelguy/wilder.nvim',
-    --     run = ':UpdateRemotePlugins',
-    --     config = function()
-    --         require'config.wilder'.setup
-    --     end
-    -- }
 end

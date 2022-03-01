@@ -10,8 +10,6 @@ return function(use)
 		config = function()
             local treesitter = require('nvim-treesitter.configs')
 
-            require'user.note-taking.syntax-parsing'()
-
             treesitter.setup {
                 ensure_installed = 'all',
 

@@ -8,7 +8,7 @@ local i = luasnip.insert_node
 local f = luasnip.function_node
 local c = luasnip.choice_node
 
-require("luasnip/loaders/from_vscode").lazy_load()
+require'luasnip.loaders.from_vscode'.lazy_load()
 
 local function copy(args)
 	return args[1]

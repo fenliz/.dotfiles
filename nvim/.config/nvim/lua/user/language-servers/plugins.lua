@@ -30,8 +30,8 @@ return function(use)
                     require'user.language-servers.configs.typescript'(opts)
                 elseif server.name == 'jsonls' then
                     require'user.language-servers.configs.json'(opts)
-                elseif server.name == 'ccls' then
-                    require'user.language-servers.configs.json'(opts)
+                elseif server.name == 'omnisharp' then
+                    require'user.language-servers.configs.csharp'(opts)
                 elseif server.name == 'rust_analyzer' then
                     require'user.language-servers.configs.rust'(server, opts)
                     server:attach_buffers()
