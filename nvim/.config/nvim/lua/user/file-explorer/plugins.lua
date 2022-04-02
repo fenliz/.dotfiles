@@ -6,9 +6,6 @@ return function(use)
 			local nvim_tree = require'nvim-tree'
 			local nvim_tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
-            vim.g.nvim_tree_disable_window_picker = 1
-            vim.g.nvim_tree_quit_on_open = 1
-
             nvim_tree.setup {
 				update_focused_file = {
                     enable = true
@@ -24,7 +21,7 @@ return function(use)
 							{ key = 'h', cb = nvim_tree_cb('parent_node') },
 						}
 					},
-				}
+				},
 			}
 		end
 	}
