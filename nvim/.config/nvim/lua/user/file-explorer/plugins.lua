@@ -13,7 +13,6 @@ return function(use)
 				view = {
 					width = 40,
 					hide_root_folder = true,
-					auto_resize = true,
 					mappings = {
 						list = {
 							{ key = 't', cb = nvim_tree_cb('tabnew') },
@@ -22,6 +21,16 @@ return function(use)
 						}
 					},
 				},
+                actions = {
+                    open_file = {
+                        resize_window = true
+                    }
+                },
+                renderer = {
+                    indent_markers = {
+                        enable = true
+                    }
+                },
 			}
 		end
 	}

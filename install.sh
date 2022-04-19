@@ -3,14 +3,14 @@
 declare -a arr=(
   "alacritty"
   "autorandr"
+  "dwm"
   "git"
   "gtk"
-  "i3"
   "nvim"
   "starship"
   "tmux"
   "rofi"
-  "Xinitrc"
+  "xinitrc"
   "Xresources"
   "zsh"
 )
