@@ -18,8 +18,8 @@ nnoremap('<leader>fb', '<cmd>lua require"telescope.builtin".buffers()<CR>', '<si
 nnoremap('<leader>fm', '<cmd>lua require"telescope.builtin".marks()<CR>', '<silent>', 'Find: Mark')
 
 -- Commands
-nnoremap('<leader>fc', '<cmd>lua require"telescope.builtin".commands()<CR>', '<silent>', 'Find: Command')
-nnoremap('<leader>fk', '<cmd>lua require"telescope.builtin".keymaps()<CR>', '<silent>', 'Find: Keymap')
+nnoremap('<leader>fc', '<cmd>lua require"legendary".find("commands")<CR>', '<silent>', 'Find: Command')
+nnoremap('<leader>fk', '<cmd>lua require"legendary".find("keymaps")<CR>', '<silent>', 'Find: Keymap')
 
 -- History
 nnoremap('<leader>fl', '<cmd>lua require"telescope.builtin".resume()<CR>', '<silent>', 'Find: Resume last search')

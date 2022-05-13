@@ -45,11 +45,11 @@ vim.cmd [[
 
 packer.init {
 	display = {
-		open_fn = function()
-			return require('packer.util').float {
-                border = 'rounded'
-            }
-		end
+		-- open_fn = function()
+		-- 	return require('packer.util').float {
+  --               border = 'rounded'
+  --           }
+		-- end
 	}
 }
 
@@ -90,8 +90,9 @@ return packer.startup(function(use)
 	-- Key mappings
 	use {
 		'b0o/mapx.nvim',
-		requires = { 'folke/which-key.nvim' },
+		requires = { 'folke/which-key.nvim', 'mrjones2014/legendary.nvim' },
 		config = function()
+      require'legendary'.setup()
 			require'mapx'.setup {
 				global = 'force',
 				whichkey = true

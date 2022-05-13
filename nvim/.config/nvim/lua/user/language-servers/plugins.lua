@@ -10,20 +10,19 @@ return function(use)
             'simrat39/rust-tools.nvim',
         },
         config = function()
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            local opts = {
+                capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities),
+                on_attach = require'user.language-servers.on_attach'
+            }
+
             require'user.language-servers.diagnostics'
-            require'user.language-servers.configs.null-ls'
+            require'user.language-servers.configs.null-ls'(opts)
 
             require'lsp_signature'.setup { hint_enable = false }
             require'fidget'.setup {}
 
             require'nvim-lsp-installer'.on_server_ready(function(server)
-                local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-                local opts = {
-                    capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities),
-                    on_attach = require'user.language-servers.on_attach'
-                }
-
                 if server.name == 'sumneko_lua' then
                     require'user.language-servers.configs.lua'(opts)
                 elseif server.name == 'tsserver' then
