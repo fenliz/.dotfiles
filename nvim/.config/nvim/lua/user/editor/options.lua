@@ -14,7 +14,7 @@ o.smartcase = true
 
 -- Text
 o.wrap = false
-o.encoding = 'UTF-8'
+o.encoding = "UTF-8"
 
 -- Visuals
 o.termguicolors = true
@@ -23,7 +23,7 @@ o.showmode = false
 -- Line numbers
 o.number = true
 o.relativenumber = true
-o.signcolumn = 'yes'
+o.signcolumn = "yes"
 
 -- Splits
 o.splitright = true
