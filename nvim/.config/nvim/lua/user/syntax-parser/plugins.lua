@@ -17,6 +17,9 @@ return function(use)
           enable = true,
           enable_autocmd = false,
         },
+        highlight = {
+          enable = true,
+        },
         textobjects = {
           select = {
             enable = true,
