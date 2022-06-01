@@ -43,15 +43,7 @@ vim.cmd([[
 	augroup end
 ]])
 
-packer.init({
-	display = {
-		-- open_fn = function()
-		-- 	return require('packer.util').float {
-		--               border = 'rounded'
-		--           }
-		-- end
-	},
-})
+packer.init()
 
 return packer.startup(function(use)
 	-- Speed up startup time
