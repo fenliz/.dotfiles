@@ -26,15 +26,14 @@ return function(use)
       require("nvim-autopairs").setup()
 
       cmp.setup({
-        sources = {
-          { name = "copilot" },
-          { name = "nvim_lsp" },
-          { name = "nvim_lua" },
-          { name = "luasnip" },
-          { name = "emoji" },
-          { name = "buffer" },
+        sources = cmp.config.sources({
           { name = "path" },
-        },
+          { name = "copilot" },
+          { name = "nvim_lsp", keyword_length = 3 },
+          { name = "nvim_lua", keyword_length = 3 },
+          { name = "luasnip", keyword_length = 2 },
+          { name = "emoji" },
+        }, { name = "buffer", keyword_length = 3 }),
         formatting = {
           fields = { "abbr", "kind", "menu" },
           format = require("user.code-completion.utils").format,
@@ -70,15 +69,22 @@ return function(use)
             require("luasnip").lsp_expand(args.body)
           end,
         },
-      })
-
-      cmp.setup.cmdline(":", {
-        sources = {
-          { name = "cmdline" },
+        window = {
+          documentation = cmp.config.window.bordered(),
         },
       })
 
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, {
+          { name = "cmdline" },
+        }),
+      })
+
       cmp.setup.cmdline("/", {
+        mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
           { name = "nvim_Lsp_document_symbol" },
         }, {

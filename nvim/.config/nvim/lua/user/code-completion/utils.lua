@@ -32,12 +32,13 @@ M.format = function(entry, item)
   item.kind = string.format("%s", kind_icons[item.kind])
 
   item.menu = ({
-    nvim_lsp = "[LSP]",
-    luasnip = "[Snippet]",
-    copilot = "[Copilot]",
-    buffer = "[Buffer]",
     path = "[Path]",
+    copilot = "[AI]",
+    nvim_lsp = "[LSP]",
+    nvim_lua = "[Lua]",
+    luasnip = "[Snip]",
     emoji = "[Emoji]",
+    buffer = "[Buf]",
   })[entry.source.name]
 
   return item

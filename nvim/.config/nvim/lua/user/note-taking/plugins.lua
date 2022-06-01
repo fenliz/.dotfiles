@@ -5,6 +5,16 @@ return function(use)
       require("neorg").setup({
         load = {
           ["core.defaults"] = {},
+          ["core.norg.concealer"] = {
+            config = {
+              preset = "diamond",
+            },
+          },
+          ["core.norg.qol.toc"] = {
+            config = {
+              toc_split_placement = "right",
+            },
+          },
         },
       })
     end,
