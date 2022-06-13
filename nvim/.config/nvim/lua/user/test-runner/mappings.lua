@@ -5,7 +5,7 @@ mapx.nname("<leader>t", "Test")
 nnoremap("<leader>tt", ':lua require("neotest").run.run()<CR>', "<silent>", "Test: Nearest test")
 nnoremap("<leader>tf", ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>', "<silent>", "Test: Current file")
 nnoremap("<leader>tr", ':lua require("neotest").run.run_last()<CR>', "<silent>", "Test: Rerun test")
-nnoremap("<leader>ts", ':lua require("neotest").summary.toggle()', "<silent>", "Test Summary: Toggle")
+nnoremap("<leader>ts", ':lua require("neotest").summary.toggle()<CR>', "<silent>", "Test Summary: Toggle")
 
 nnoremap(
   "<leader>td",
