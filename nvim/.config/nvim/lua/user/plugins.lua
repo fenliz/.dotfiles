@@ -65,7 +65,17 @@ return packer.startup(function(use)
   use("kyazdani42/nvim-web-devicons")
 
   -- UI Tweaks
-  use("stevearc/dressing.nvim")
+  use({
+    "stevearc/dressing.nvim",
+    config = function()
+      require("dressing").setup({
+        select = {
+          -- Avoid code actions to get cached and interfere with require("telescope.builtin").resume()
+          telescope = require("telescope.themes").get_dropdown({ cache_picker = false }),
+        },
+      })
+    end,
+  })
 
   -- Notifications
   use({
