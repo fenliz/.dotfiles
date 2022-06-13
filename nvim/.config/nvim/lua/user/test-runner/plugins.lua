@@ -2,8 +2,12 @@ return function(use)
   use({
     "nvim-neotest/neotest",
     requires = {
-      "haydenmeade/neotest-jest",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
+
+      -- Adapters
+      "haydenmeade/neotest-jest",
     },
     config = function()
       require("neotest").setup({
