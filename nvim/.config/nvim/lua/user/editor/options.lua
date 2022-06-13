@@ -19,6 +19,7 @@ o.encoding = "UTF-8"
 -- Visuals
 o.termguicolors = true
 o.showmode = false
+o.cmdheight = 0
 
 -- Line numbers
 o.number = true
