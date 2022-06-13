@@ -6,6 +6,7 @@ nnoremap("<leader>tt", ':lua require("neotest").run.run()<CR>', "<silent>", "Tes
 nnoremap("<leader>tf", ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>', "<silent>", "Test: Current file")
 nnoremap("<leader>tr", ':lua require("neotest").run.run_last()<CR>', "<silent>", "Test: Rerun test")
 nnoremap("<leader>te", ':lua require("neotest").summary.toggle()<CR>', "<silent>", "Test: Toggle explorer")
+nnoremap("<leader>tK", ':lua require("neotest").output.open()<CR>', "<silent>", "Test: Show output")
 
 nnoremap(
   "<leader>td",
