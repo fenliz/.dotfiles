@@ -1,1 +1,2 @@
-vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
+inoremap("<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true }, "Copilot: Complete")
+inoremap("<C-k>", "copilot#Next()", { silent = true, expr = true }, "Copilot: Next")

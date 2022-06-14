@@ -9,7 +9,6 @@ return function(use)
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
-      "hrsh7th/cmp-copilot",
 
       "windwp/nvim-autopairs",
 
@@ -28,7 +27,6 @@ return function(use)
       cmp.setup({
         sources = cmp.config.sources({
           { name = "path" },
-          { name = "copilot" },
           { name = "nvim_lsp", keyword_length = 3 },
           { name = "nvim_lua", keyword_length = 3 },
           { name = "luasnip", keyword_length = 2 },
