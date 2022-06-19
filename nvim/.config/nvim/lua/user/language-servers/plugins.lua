@@ -5,7 +5,7 @@ return function(use)
       "williamboman/nvim-lsp-installer",
       "b0o/SchemaStore.nvim",
       "jose-elias-alvarez/null-ls.nvim",
-      "ray-x/lsp_signature.nvim",
+      -- "ray-x/lsp_signature.nvim",
       "j-hui/fidget.nvim",
       "simrat39/rust-tools.nvim",
     },
@@ -19,7 +19,7 @@ return function(use)
       require("user.language-servers.diagnostics")
       require("user.language-servers.configs.null-ls")(opts)
 
-      require("lsp_signature").setup({ hint_enable = false })
+      -- require("lsp_signature").setup({ hint_enable = false })
       require("fidget").setup({})
 
       require("nvim-lsp-installer").on_server_ready(function(server)

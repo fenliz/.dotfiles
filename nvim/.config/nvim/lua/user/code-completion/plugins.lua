@@ -8,6 +8,7 @@ return function(use)
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
 
       "windwp/nvim-autopairs",
@@ -26,6 +27,7 @@ return function(use)
 
       cmp.setup({
         sources = cmp.config.sources({
+          { name = "nvim_lsp_signature_help" },
           { name = "path" },
           { name = "nvim_lsp", keyword_length = 3 },
           { name = "nvim_lua", keyword_length = 3 },
