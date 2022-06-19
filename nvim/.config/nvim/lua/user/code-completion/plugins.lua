@@ -10,6 +10,7 @@ return function(use)
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
+      "David-Kunz/cmp-npm",
 
       "windwp/nvim-autopairs",
 
@@ -24,14 +25,23 @@ return function(use)
       local luasnip = require("luasnip")
 
       require("nvim-autopairs").setup()
+      require("cmp-npm").setup()
 
       cmp.setup({
         sources = cmp.config.sources({
+          -- Dependencies
+          { name = "npm", keyword_length = 4 },
+
+          -- Snippets
+          { name = "luasnip", keyword_length = 2 },
+
+          -- LSP
           { name = "nvim_lsp_signature_help" },
           { name = "path" },
           { name = "nvim_lsp", keyword_length = 3 },
           { name = "nvim_lua", keyword_length = 3 },
-          { name = "luasnip", keyword_length = 2 },
+
+          -- Misc
           { name = "emoji" },
         }, { name = "buffer", keyword_length = 3 }),
         formatting = {
