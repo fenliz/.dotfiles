@@ -5,8 +5,4 @@ return function(use)
       require("gitsigns").setup()
     end,
   })
-
-  use({
-    "kdheepak/lazygit.nvim",
-  })
 end
