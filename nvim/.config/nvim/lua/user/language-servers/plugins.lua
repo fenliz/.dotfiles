@@ -12,7 +12,6 @@ return function(use)
     config = function()
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       local opts = {
-        flags = { debounce_text_changes = 150 },
         capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities),
         on_attach = require("user.language-servers.on_attach"),
       }

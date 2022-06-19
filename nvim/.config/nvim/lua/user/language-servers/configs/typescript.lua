@@ -14,7 +14,7 @@ local function filter(arr, fn)
 end
 
 local function filterReactDTS(value)
-  return string.match(value.uri, "react.d.ts") == nil
+  return string.match(value.uri, "react/index.d.ts") == nil
 end
 
 return function(opts)
@@ -30,8 +30,9 @@ return function(opts)
   opts.handlers = {
     ["textDocument/definition"] = function(err, result, method, ...)
       if vim.tbl_islist(result) and #result > 1 then
-        local filtered_result = filter(result, filterReactDTS)
-        return vim.lsp.handlers["textDocument/definition"](err, filtered_result, method, ...)
+        result = vim.tbl_filter(function(v)
+          return not string.find(v.uri, "react/index.d.ts")
+        end, result)
       end
 
       vim.lsp.handlers["textDocument/definition"](err, result, method, ...)

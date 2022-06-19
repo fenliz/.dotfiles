@@ -29,7 +29,7 @@ return function(client, bufnr)
       group = formatting_augroup,
       buffer = bufnr,
       callback = function()
-        vim.lsp.buf.format({ timeout_ms = 2000 })
+        vim.lsp.buf.format()
       end,
     })
   end
