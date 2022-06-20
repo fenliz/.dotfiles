@@ -7,7 +7,7 @@ return function(use)
       "antoinemadec/FixCursorHold.nvim",
 
       -- Adapters
-      -- "haydenmeade/neotest-jest",
+      "haydenmeade/neotest-jest",
 
       -- TEMP: Until neotest-jest works
       "vim-test/vim-test",
@@ -20,6 +20,12 @@ return function(use)
           require("neotest-vim-test")({
             ignore_filetypes = { "python", "lua" },
           }),
+        },
+        icons = {
+          passed = "✅",
+          failed = "❎",
+          running = "🔃",
+          skipped = "🔲",
         },
       })
     end,
