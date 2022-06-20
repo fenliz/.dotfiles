@@ -1,6 +1,3 @@
-inoremap("jk", "<ESC>", "Exit insert mode")
-inoremap("kj", "<ESC>", "Exit insert mode")
-
 vnoremap("<", "<gv", "Indent")
 vnoremap(">", ">gv", "Indent")
 
