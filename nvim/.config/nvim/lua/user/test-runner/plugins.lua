@@ -15,6 +15,9 @@ return function(use)
     },
     config = function()
       require("neotest").setup({
+        discovery = {
+          enabled = false,
+        },
         adapters = {
           -- require("neotest-jest"),
           require("neotest-vim-test")({
