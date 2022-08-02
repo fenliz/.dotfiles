@@ -15,10 +15,24 @@ M.plugins = function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("tasks").setup({
+				runners = {
+					npm_toggleterm = {
+						create_task = function(_, spec)
+							return require("tasks.lib.task"):new(function()
+								require("toggleterm").exec(table.concat(spec.cmd, " "))
+							end)
+						end,
+					},
+				},
 				sources = {
 					npm = require("tasks.sources.npm"),
 					vscode = require("tasks.sources.tasksjson"),
 				},
+				router = function(_, _, _, source)
+					if source == "npm" then
+						return "npm_toggleterm"
+					end
+				end,
 			})
 
 			require("telescope").load_extension("tasks")
