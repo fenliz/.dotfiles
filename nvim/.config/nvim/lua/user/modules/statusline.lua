@@ -7,16 +7,14 @@ end
 M.plugins = function(use)
 	use({
 		"feline-nvim/feline.nvim",
+		requires = {
+			"kyazdani42/nvim-web-devicons",
+		},
 		config = function()
-
-			-- local components = require("catppuccin.core.integrations.feline")
-			-- components.active[2][1] = nil -- Disable LSP progress
-			--
-			-- require("feline").setup({
-			-- 	components = components,
-			-- })
-
-			-- require("feline").winbar.setup()
+			require("feline").setup({
+				components = require("catppuccin.groups.integrations.feline").get(),
+			})
+			require("feline").winbar.setup()
 		end,
 	})
 end

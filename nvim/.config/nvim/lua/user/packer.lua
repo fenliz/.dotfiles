@@ -40,7 +40,7 @@ return function(plugins)
 	vim.cmd([[
 	augroup packer_user_config
 		autocmd!
-		autocmd BufWritePost init.lua :lua ReloadPlugins()
+		autocmd BufWritePost *.lua :lua ReloadPlugins()
 	augroup end
 ]])
 
