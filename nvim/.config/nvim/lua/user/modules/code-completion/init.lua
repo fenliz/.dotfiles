@@ -26,7 +26,9 @@ local kind_icons = {
 	TypeParameter = "",
 }
 
-local format = function(entry, item)
+local M = {}
+
+M.format = function(entry, item)
 	item.kind = string.format("%s", kind_icons[item.kind])
 
 	item.menu = ({
@@ -41,8 +43,6 @@ local format = function(entry, item)
 
 	return item
 end
-
-local M = {}
 
 M.options = function()
 	-- Code completion
@@ -97,21 +97,21 @@ M.plugins = function(use)
 					-- Dependencies
 					{ name = "npm", keyword_length = 4 },
 
-					-- Snippets
-					{ name = "luasnip", keyword_length = 2 },
-
 					-- LSP
-					{ name = "nvim_lsp_signature_help" },
+					-- { name = "nvim_lsp_signature_help" },
 					{ name = "path" },
 					{ name = "nvim_lsp", keyword_length = 3 },
 					{ name = "nvim_lua", keyword_length = 3 },
+
+					-- Snippets
+					{ name = "luasnip", keyword_length = 2 },
 
 					-- Misc
 					{ name = "emoji" },
 				}, { name = "buffer", keyword_length = 3 }),
 				formatting = {
 					fields = { "abbr", "kind", "menu" },
-					format = format,
+					format = require("user.modules.code-completion").format,
 				},
 				mapping = {
 					["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -149,14 +149,14 @@ M.plugins = function(use)
 				},
 			})
 
-			-- cmp.setup.cmdline(":", {
-			--   mapping = cmp.mapping.preset.cmdline(),
-			--   sources = cmp.config.sources({
-			--     { name = "path" },
-			--   }, {
-			--     { name = "cmdline" },
-			--   }),
-			-- })
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" },
+				}, {
+					{ name = "cmdline" },
+				}),
+			})
 
 			cmp.setup.cmdline("/", {
 				mapping = cmp.mapping.preset.cmdline(),
