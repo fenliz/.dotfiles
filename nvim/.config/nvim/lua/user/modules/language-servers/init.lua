@@ -1,17 +1,17 @@
 local M = {}
 
 M.mappings = function()
-	-- 	require("mapx").nname("<leader>x", "Diagnostics")
-	--
-	-- 	nnoremap("<leader>xx", "<cmd>Trouble<cr>", "<silent>", "Toggle")
-	--
-	-- 	nnoremap("<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", "<silent>", "Toggle workspace diagnostics")
-	--
-	-- 	nnoremap("<leader>xd", "<cmd>Trouble document_diagnostics<cr>", "<silent>", "Toggle document diagnostics")
-	--
-	-- 	nnoremap("<leader>xl", "<cmd>Trouble loclist<cr>", "<silent>", "Toggle loclist")
-	--
-	-- 	nnoremap("<leader>xq", "<cmd>Trouble quickfix<cr>", "<silent>", "Toggle quickfix")
+	require("mapx").nname("<leader>x", "Diagnostics")
+
+	nnoremap("<leader>xx", "<cmd>Trouble<cr>", "<silent>", "Toggle")
+
+	nnoremap("<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", "<silent>", "Toggle workspace diagnostics")
+
+	nnoremap("<leader>xd", "<cmd>Trouble document_diagnostics<cr>", "<silent>", "Toggle document diagnostics")
+
+	nnoremap("<leader>xl", "<cmd>Trouble loclist<cr>", "<silent>", "Toggle loclist")
+
+	nnoremap("<leader>xq", "<cmd>Trouble quickfix<cr>", "<silent>", "Toggle quickfix")
 end
 
 M.plugins = function(use)
@@ -57,6 +57,7 @@ M.plugins = function(use)
 					header = "",
 					prefix = "",
 				},
+				virtual_text = false,
 			})
 
 			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -100,6 +101,13 @@ M.plugins = function(use)
 			require("trouble").setup({
 				use_diagnostics_signs = true,
 			})
+		end,
+	})
+
+	use({
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
 		end,
 	})
 end
