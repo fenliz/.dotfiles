@@ -5,12 +5,12 @@ return function(opts)
 		sources = {
 			-- Code actions
 			null_ls.builtins.code_actions.gitsigns,
-			null_ls.builtins.code_actions.refactoring,
 			null_ls.builtins.code_actions.eslint_d,
 
 			-- Diagnostics
 			null_ls.builtins.diagnostics.eslint_d,
 			null_ls.builtins.diagnostics.jsonlint,
+			null_ls.builtins.diagnostics.actionlint,
 
 			-- Formatting
 			null_ls.builtins.formatting.eslint_d,

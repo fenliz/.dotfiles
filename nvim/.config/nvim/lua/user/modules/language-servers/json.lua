@@ -8,7 +8,7 @@ return function(opts)
 	opts.on_attach = function(client, bufnr)
 		on_attach(client, bufnr)
 
-    -- Disable builtin formatting in favor of null-ls
+		-- Disable builtin formatting in favor of null-ls
 		client.server_capabilities.document_formatting = false
 		client.server_capabilities.document_range_formatting = false
 	end

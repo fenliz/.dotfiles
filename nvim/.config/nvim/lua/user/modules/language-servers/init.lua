@@ -18,21 +18,18 @@ M.plugins = function(use)
 	use({
 		"neovim/nvim-lspconfig",
 		requires = {
-			"williamboman/nvim-lsp-installer",
-			"b0o/SchemaStore.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
-			-- "ray-x/lsp_signature.nvim",
 			"nvim-lua/plenary.nvim",
-			"j-hui/fidget.nvim",
-			"simrat39/rust-tools.nvim",
+
+			-- Language servers
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
+			"jose-elias-alvarez/null-ls.nvim",
+
+			-- Misc
+			"b0o/SchemaStore.nvim",
 		},
 		config = function()
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			local opts = {
-				capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities),
-				on_attach = require("user.modules.language-servers.on_attach"),
-			}
-
 			local signs = {
 				{ name = "DiagnosticSignError", text = "" },
 				{ name = "DiagnosticSignWarn", text = "" },
@@ -57,7 +54,6 @@ M.plugins = function(use)
 					header = "",
 					prefix = "",
 				},
-				virtual_text = false,
 			})
 
 			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -67,28 +63,36 @@ M.plugins = function(use)
 				border = "rounded",
 			})
 
+			require("mason").setup()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "sumneko_lua", "tsserver", "jsonls" },
+			})
+
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			local opts = {
+				capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities),
+				on_attach = require("user.modules.language-servers.on_attach"),
+			}
+
 			require("user.modules.language-servers.null-ls")(opts)
 
-			-- require("lsp_signature").setup({ hint_enable = false })
-			require("fidget").setup({})
-
-			require("nvim-lsp-installer").on_server_ready(function(server)
-				if server.name == "sumneko_lua" then
+			require("mason-lspconfig").setup_handlers({
+				function(server_name)
+					require("lspconfig")[server_name].setup(opts)
+				end,
+				["sumneko_lua"] = function()
 					require("user.modules.language-servers.lua")(opts)
-				elseif server.name == "tsserver" then
+					require("lspconfig")["sumneko_lua"].setup(opts)
+				end,
+				["tsserver"] = function()
 					require("user.modules.language-servers.typescript")(opts)
-				elseif server.name == "jsonls" then
+					require("lspconfig")["tsserver"].setup(opts)
+				end,
+				["jsonls"] = function()
 					require("user.modules.language-servers.json")(opts)
-				elseif server.name == "omnisharp" then
-					require("user.modules.language-servers.csharp")(opts)
-				elseif server.name == "rust_analyzer" then
-					require("user.modules.language-servers.rust")(server, opts)
-					server:attach_buffers()
-					return
-				end
-
-				server:setup(opts)
-			end)
+					require("lspconfig")["jsonls"].setup(opts)
+				end,
+			})
 		end,
 	})
 
@@ -105,9 +109,18 @@ M.plugins = function(use)
 	})
 
 	use({
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+
+		"j-hui/fidget.nvim",
 		config = function()
-			require("lsp_lines").setup()
+			require("fidget").setup({})
+		end,
+	})
+
+	use({
+
+		"ray-x/lsp_signature.nvim",
+		config = function()
+			require("lsp_signature").setup({ hint_enable = false })
 		end,
 	})
 end
