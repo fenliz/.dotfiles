@@ -38,6 +38,7 @@ M.setup = function()
 
 	require("user.packer")(function(use)
 		require("user.modules.code-completion").plugins(use)
+		require("user.modules.debugging").plugins(use)
 		require("user.modules.file-explorer").plugins(use)
 		require("user.modules.fuzzy-finder").plugins(use)
 		require("user.modules.http-client").plugins(use)
