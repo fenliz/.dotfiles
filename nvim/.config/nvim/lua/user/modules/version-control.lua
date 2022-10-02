@@ -4,8 +4,8 @@ local lazygit = require("toggleterm.terminal").Terminal:new({
 	direction = "float",
 	on_open = function(term)
 		vim.cmd("startinsert!")
-    nnoremap('q', '<cmd>close<cr>', '<silent>', 'Terminal: Close', { buffer = term.bufnr })
-    nnoremap('<Esc>', '<cmd>close<cr>', '<silent>', 'Terminal: Close', { buffer = term.bufnr })
+		nnoremap("q", "<cmd>close<cr>", "<silent>", "Terminal: Close", { buffer = term.bufnr })
+		nnoremap("<Esc>", "<cmd>close<cr>", "<silent>", "Terminal: Close", { buffer = term.bufnr })
 	end,
 })
 
@@ -34,9 +34,7 @@ M.mappings = function()
 		require("telescope.builtin").git_commits()
 	end, "<silent>", "Git: Commits")
 
-	nnoremap("<leader>gh", function()
-		require("telescope.builtin").git_bcommits()
-	end, "<silent>", "Git: File history")
+	nnoremap("<leader>gh", ":DiffviewFileHistory %<CR>", "<silent>", "Git: File history")
 
 	nnoremap("<leader>gS", function()
 		require("telescope.builtin").git_stash()
@@ -67,6 +65,14 @@ M.plugins = function(use)
 				current_line_blame = true,
 			})
 		end,
+	})
+
+	use({
+		"sindrets/diffview.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function() end,
 	})
 end
 
