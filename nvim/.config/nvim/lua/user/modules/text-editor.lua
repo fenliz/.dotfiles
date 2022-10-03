@@ -20,7 +20,8 @@ M.options = function()
 	-- Visuals
 	vim.o.termguicolors = true
 	vim.o.showmode = false
-	-- o.cmdheight = 0
+	vim.o.cmdheight = 0
+	vim.o.laststatus = 0
 
 	-- Line numbers
 	vim.o.number = true
@@ -43,9 +44,6 @@ M.options = function()
 	vim.o.backup = false
 	vim.o.writebackup = false
 	vim.o.undofile = true
-
-	--[[ vim.o.ls = 0 ]]
-	--[[ vim.o.ch = 0 ]]
 end
 
 M.mappings = function()
@@ -91,7 +89,7 @@ M.plugins = function(use)
 		end,
 	})
 
-	use("tpope/vim-surround")
+	--[[ use("tpope/vim-surround") ]]
 
 	use("ggandor/lightspeed.nvim")
 
