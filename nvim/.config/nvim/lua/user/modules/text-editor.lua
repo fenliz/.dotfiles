@@ -44,8 +44,8 @@ M.options = function()
 	vim.o.writebackup = false
 	vim.o.undofile = true
 
-	vim.o.ls = 0
-	vim.o.ch = 0
+	--[[ vim.o.ls = 0 ]]
+	--[[ vim.o.ch = 0 ]]
 end
 
 M.mappings = function()
