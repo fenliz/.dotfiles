@@ -20,8 +20,8 @@ M.options = function()
 	-- Visuals
 	vim.o.termguicolors = true
 	vim.o.showmode = false
-	vim.o.cmdheight = 0
-	vim.o.laststatus = 0
+	--[[ vim.o.cmdheight = 0 ]]
+	--[[ vim.o.laststatus = 0 ]]
 
 	-- Line numbers
 	vim.o.number = true
@@ -89,7 +89,7 @@ M.plugins = function(use)
 		end,
 	})
 
-	--[[ use("tpope/vim-surround") ]]
+	use("tpope/vim-surround")
 
 	use("ggandor/lightspeed.nvim")
 
