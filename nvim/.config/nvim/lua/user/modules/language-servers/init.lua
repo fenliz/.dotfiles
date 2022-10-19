@@ -70,7 +70,7 @@ M.plugins = function(use)
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			local opts = {
-				capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities),
+				capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities),
 				on_attach = require("user.modules.language-servers.on_attach"),
 			}
 
