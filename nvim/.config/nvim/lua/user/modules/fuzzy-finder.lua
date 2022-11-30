@@ -6,13 +6,6 @@ local find_dotfiles = function(opts)
 	require("telescope.builtin").find_files(opts)
 end
 
-local find_files = function(opts)
-	local ok = pcall(require("telescope.builtin").git_files, opts)
-	if not ok then
-		require("telescope.builtin").find_files(opts)
-	end
-end
-
 local search_for_text = function(opts)
 	opts.vimgrep_arguments = {
 		"rg",
@@ -45,7 +38,7 @@ M.mappings = function()
 
 	-- Files
 	nnoremap("<C-p>", function()
-		find_files()
+		require("telescope.builtin").find_files()
 	end, "<silent>")
 
 	nnoremap("<leader>ff", function()
