@@ -42,7 +42,7 @@ M.mappings = function()
 	end, "<silent>")
 
 	nnoremap("<leader>ff", function()
-		find_files()
+		require("telescope.builtin").find_files()
 	end, "<silent>", "Find: File")
 
 	nnoremap("<leader>fF", function()
