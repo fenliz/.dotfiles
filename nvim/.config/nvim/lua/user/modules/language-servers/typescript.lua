@@ -3,6 +3,7 @@ return function(opts)
 
 	-- Disable builtin formatting in favor of null-ls
 	opts.on_attach = function(client, bufnr)
+		require("twoslash-queries").attach(client, bufnr)
 		on_attach(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 	end

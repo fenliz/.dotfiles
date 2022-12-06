@@ -108,11 +108,15 @@ M.plugins = function(use)
 		end,
 	})
 
+	--[[ use({ ]]
+	--[[ 	"ray-x/lsp_signature.nvim", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("lsp_signature").setup({ hint_enable = false }) ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
+
 	use({
-		"ray-x/lsp_signature.nvim",
-		config = function()
-			require("lsp_signature").setup({ hint_enable = false })
-		end,
+		"marilari88/twoslash-queries.nvim"
 	})
 end
 
