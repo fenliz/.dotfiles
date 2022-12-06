@@ -4,7 +4,6 @@ local lazygit = require("toggleterm.terminal").Terminal:new({
 	direction = "float",
 	on_open = function(term)
 		vim.cmd("startinsert!")
-		nnoremap("q", "<cmd>close<cr>", "<silent>", "Terminal: Close", { buffer = term.bufnr })
 		nnoremap("<Esc>", "<cmd>close<cr>", "<silent>", "Terminal: Close", { buffer = term.bufnr })
 	end,
 })
