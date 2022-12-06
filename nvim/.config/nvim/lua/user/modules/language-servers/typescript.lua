@@ -12,7 +12,7 @@ return function(opts)
 		["textDocument/definition"] = function(err, result, method, ...)
 			if vim.tbl_islist(result) and #result > 1 then
 				result = vim.tbl_filter(function(v)
-					return v.uri ~= nil and not string.find(v.uri, "react/index.d.ts")
+					return not string.find(v.targetUri, "react/index.d.ts")
 				end, result)
 			end
 
