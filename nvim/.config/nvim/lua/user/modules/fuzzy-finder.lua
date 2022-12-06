@@ -93,10 +93,6 @@ M.mappings = function()
 		require("telescope").extensions.neoclip.default()
 	end, "<silent>", "Find: Clipboard (History)")
 
-	nnoremap("<leader>fn", function()
-		require("telescope").extensions.notify.notify()
-	end, "<silent>", "Find: Notification (History)")
-
 	-- Vim
 	nnoremap("<leader>fh", function()
 		require("telescope.builtin").help_tags()
