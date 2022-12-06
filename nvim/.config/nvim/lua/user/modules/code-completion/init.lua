@@ -58,8 +58,6 @@ M.options = function()
 end
 
 M.mappings = function()
-	inoremap("<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true }, "Copilot: Complete")
-	inoremap("<C-k>", "copilot#Next()", { silent = true, expr = true }, "Copilot: Next")
 end
 
 M.plugins = function(use)
@@ -82,8 +80,6 @@ M.plugins = function(use)
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			"saadparwaiz1/cmp_luasnip",
-
-			"github/copilot.vim",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -169,6 +165,24 @@ M.plugins = function(use)
 
 			require("user.modules.code-completion.snippets")
 		end,
+	})
+
+	use({
+		"zbirenbaum/copilot.lua",
+		config = function()
+			vim.defer_fn(function()
+				require("copilot").setup({
+					suggestion = {
+						auto_trigger = true,
+						keymap = {
+							accept = "<C-l>",
+							next = "<C-k>",
+							prev = "<C-j>",
+						}
+					}
+				})
+			end, 100)
+		end
 	})
 end
 
