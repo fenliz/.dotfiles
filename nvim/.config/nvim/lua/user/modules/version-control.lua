@@ -1,25 +1,7 @@
-local lazygit = require("toggleterm.terminal").Terminal:new({
-	cmd = "lazygit",
-	hidden = true,
-	direction = "float",
-	on_open = function(term)
-		vim.cmd("startinsert!")
-		nnoremap("<Esc>", "<cmd>close<cr>", "<silent>", "Terminal: Close", { buffer = term.bufnr })
-	end,
-})
-
-local toggle_lazygit = function()
-	lazygit:toggle()
-end
-
 local M = {}
 
 M.mappings = function()
 	require("mapx").nname("<leader>g", "Git")
-
-	nnoremap("<leader>gg", function()
-		toggle_lazygit()
-	end, "<silent>", "Git: Browser")
 
 	nnoremap("<leader>gs", function()
 		require("telescope.builtin").git_status()
