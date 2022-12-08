@@ -108,6 +108,12 @@ M.plugins = function(use)
 		end,
 	})
 
+	use({
+		"jose-elias-alvarez/typescript.nvim",
+		config = function()
+			require("typescript").setup({})
+		end,
+	})
 	--[[ use({ ]]
 	--[[ 	"ray-x/lsp_signature.nvim", ]]
 	--[[ 	config = function() ]]
