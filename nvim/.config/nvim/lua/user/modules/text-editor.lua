@@ -56,6 +56,10 @@ M.mappings = function()
 	nnoremap("<leader>p", '"+p"', "Paste: From system clipboard")
 
 	tnoremap("<Esc>", "<C-\\><C-n>")
+
+	nnoremap("gx", function()
+		require("open").open_cword()
+	end)
 end
 
 M.plugins = function(use)
@@ -104,6 +108,18 @@ M.plugins = function(use)
 		"karb94/neoscroll.nvim",
 		config = function()
 			require("neoscroll").setup()
+		end,
+	})
+
+	use({
+		"ofirgall/open.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("open").setup({
+				system_open = {
+					cmd = "xdg-open",
+				},
+			})
 		end,
 	})
 end
