@@ -6,21 +6,22 @@ local find_dotfiles = function(opts)
 	require("telescope.builtin").find_files(opts)
 end
 
-local search_for_text = function(opts)
-	opts.vimgrep_arguments = {
-		"rg",
-		"--color=never",
-		"--no-heading",
-		"--with-filename",
-		"--line-number",
-		"--column",
-		"--smart-case",
-		"--trim",
+local rg_opts = function()
+	local opts = {
+		additional_args = {
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--trim",
+		},
 	}
 	if vim.fn.getcwd() == vim.env.DOTFILES then
-		table.insert(opts.vimgrep_arguments, "--hidden")
+		table.insert(opts.additional_args, "--hidden")
 	end
-	require("telescope.builtin").grep_string(opts)
+	return opts
 end
 
 local M = {}
@@ -30,10 +31,10 @@ M.mappings = function()
 
 	-- Text
 	nnoremap("<leader>fs", function()
-		search_for_text({ search = vim.fn.input("") })
+		require("telescope.builtin").live_grep(rg_opts())
 	end, "<silent>", "Find: Text")
 	nnoremap("<leader>fw", function()
-		search_for_text({ search = vim.fn.expand("<cword>") })
+		require("telescope.builtin").grep_string(rg_opts())
 	end, "<silent>", "Find: Text (Current word)")
 
 	-- Files
@@ -108,12 +109,9 @@ M.plugins = function(use)
 		"nvim-telescope/telescope.nvim",
 		config = function()
 			require("telescope").setup({
-				extensions = {
-					fzf = {
-						fuzzy = true,
-						override_generic_sorter = true,
-						override_file_sorter = true,
-						case_mode = "smart_case",
+				pickers = {
+					find_files = {
+						find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
 					},
 				},
 			})
