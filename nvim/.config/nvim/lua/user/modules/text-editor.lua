@@ -99,6 +99,13 @@ M.plugins = function(use)
 			require("colorizer").setup()
 		end,
 	})
+
+	use({
+		"karb94/neoscroll.nvim",
+		config = function()
+			require("neoscroll").setup()
+		end,
+	})
 end
 
 return M
