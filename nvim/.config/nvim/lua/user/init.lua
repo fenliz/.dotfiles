@@ -11,28 +11,11 @@ M.mappings = function()
 	require("user.modules.test-runner").mappings()
 	require("user.modules.text-editor").mappings()
 	require("user.modules.version-control").mappings()
-
-	local opts = { noremap = true, silent = true }
-
-	vim.keymap.set("n", "<F10>", function()
-		if vim.o.conceallevel > 0 then
-			vim.o.conceallevel = 0
-		else
-			vim.o.conceallevel = 2
-		end
-	end, opts)
-
-	vim.keymap.set("n", "<F11>", function()
-		if vim.o.concealcursor == "n" then
-			vim.o.concealcursor = ""
-		else
-			vim.o.concealcursor = "n"
-		end
-	end, opts)
 end
 
 M.setup = function()
 	vim.g.mapleader = " "
+
 	require("user.modules.code-completion").options()
 	require("user.modules.statusline").options()
 	require("user.modules.text-editor").options()

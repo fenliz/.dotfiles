@@ -36,14 +36,6 @@ return function(plugins)
 		require("packer").sync()
 	end
 
-	-- Automatically reload neovim whenever the plugin file has been modified
-	vim.cmd([[
-	augroup packer_user_config
-		autocmd!
-		autocmd BufWritePost *.lua :lua ReloadPlugins()
-	augroup end
-]])
-
 	packer.init()
 
 	return packer.startup(function(use)
