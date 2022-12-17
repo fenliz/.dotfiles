@@ -47,8 +47,9 @@ M.mappings = function()
 	end, "<silent>", "Find: File")
 
 	nnoremap("<leader>fF", function()
-		local opts = { find_command = { "fdfind", vim.fn.expand("<cword>") } }
-		require("telescope.builtin").find_files(opts)
+		require("telescope.builtin").find_files({
+			search_file = vim.fn.expand("<cword>"),
+		})
 	end, "<silent>", "Find: File (Current word)")
 
 	nnoremap("<leader>fr", function()
@@ -102,6 +103,10 @@ M.mappings = function()
 	nnoremap("<leader>fo", function()
 		require("telescope.builtin").vim_options()
 	end, "<silent>", "Find: Option")
+
+	-- AI
+	nnoremap("<leader>fa", "<cmd>ChatGPT<cr>", "<silent>", "Find: AI")
+	vnoremap("<leader>fa", "<mcd>ChatGPTEditWithInstructions<cr>", "<silent>", "Find: AI")
 end
 
 M.plugins = function(use)
@@ -139,6 +144,18 @@ M.plugins = function(use)
 					},
 				},
 			})
+		end,
+	})
+
+	use({
+		"jackMort/ChatGPT.nvim",
+		requires = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("chatgpt").setup()
 		end,
 	})
 end
