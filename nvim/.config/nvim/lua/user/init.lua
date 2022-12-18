@@ -21,6 +21,13 @@ M.setup = function()
 	require("user.modules.text-editor").options()
 
 	require("user.packer")(function(use)
+		use({
+			"klen/nvim-config-local",
+			config = function()
+				require("config-local").setup()
+			end,
+		})
+
 		require("user.modules.code-completion").plugins(use)
 		require("user.modules.debugging").plugins(use)
 		require("user.modules.file-explorer").plugins(use)
