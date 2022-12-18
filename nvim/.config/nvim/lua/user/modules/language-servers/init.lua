@@ -82,15 +82,19 @@ M.plugins = function(use)
 				end,
 				["sumneko_lua"] = function()
 					require("user.modules.language-servers.lua")(opts)
-					require("lspconfig")["sumneko_lua"].setup(opts)
+					require("lspconfig").sumneko_lua.setup(opts)
 				end,
 				["tsserver"] = function()
 					require("user.modules.language-servers.typescript")(opts)
-					require("lspconfig")["tsserver"].setup(opts)
+					require("lspconfig").tsserver.setup(opts)
 				end,
 				["jsonls"] = function()
 					require("user.modules.language-servers.json")(opts)
-					require("lspconfig")["jsonls"].setup(opts)
+					require("lspconfig").jsonls.setup(opts)
+				end,
+				["tailwindcss"] = function()
+					require("user.modules.language-servers.tailwind")(opts)
+					require("lspconfig").tailwindcss.setup(opts)
 				end,
 			})
 		end,
@@ -122,7 +126,7 @@ M.plugins = function(use)
 	--[[ }) ]]
 
 	use({
-		"marilari88/twoslash-queries.nvim"
+		"marilari88/twoslash-queries.nvim",
 	})
 end
 

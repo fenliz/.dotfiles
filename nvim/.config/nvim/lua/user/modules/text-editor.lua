@@ -99,8 +99,20 @@ M.plugins = function(use)
 
 	use({
 		"norcalli/nvim-colorizer.lua",
+		requires = "mrshmllow/document-color.nvim",
 		config = function()
-			require("colorizer").setup()
+			require("colorizer").setup({
+				"*",
+				-- Covered by document-color plugin
+				"!css",
+				"!html",
+				"!tsx",
+				"!dart",
+			})
+
+			require("document-color").setup({
+				mode = "background",
+			})
 		end,
 	})
 
