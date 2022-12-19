@@ -154,6 +154,9 @@ M.plugins = function(use)
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 		},
+		cond = function()
+			return vim.env.OPENAI_API_KEY ~= nil
+		end,
 		config = function()
 			require("chatgpt").setup()
 		end,
