@@ -43,7 +43,7 @@ vim.o.swapfile = false
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.undofile = true
-vim.o.undodir = "~/.vim/undodir"
+vim.o.undodir = vim.fn.expand("~/.vim/undodir")
 
 -- Code completion
 vim.o.completeopt = "menu,menuone,noselect,noinsert"
