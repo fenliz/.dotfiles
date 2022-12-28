@@ -1,69 +1,89 @@
-local M = {}
+return {
+	"nvim-neotest/neotest",
+	keys = "<leader>t",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-treesitter/nvim-treesitter",
+		"antoinemadec/FixCursorHold.nvim",
 
-M.mappings = function()
-	require("mapx").nname("<leader>t", "Test")
+		-- Adapters
+		"haydenmeade/neotest-jest",
+		"marilari88/neotest-vitest",
+	},
+	config = function()
+		local npm_executable_exists = function(name)
+			local path = vim.fn.getcwd() .. "/node_modules/.bin/" .. name
+			local ok = vim.loop.fs_stat(path)
+			return ok
+		end
 
-	nnoremap("<leader>tt", function()
-		require("neotest").run.run()
-	end, "<silent>", "Test: Nearest test")
+		local adapters = {}
 
-	nnoremap("<leader>tf", function()
-		require("neotest").run.run(vim.fn.expand("%"))
-	end, "<silent>", "Test: Current file")
+		-- Conditionally add correct adapter based on
+		-- what executable is found
+		if npm_executable_exists("jest") then
+			table.insert(adapters, require("neotest-jest"))
+		elseif npm_executable_exists("vitest") then
+			table.insert(adapters, require("neotest-vitest"))
+		end
 
-	nnoremap("<leader>tr", function()
-		require("neotest").run.run_last()
-	end, "<silent>", "Test: Rerun test")
+		require("neotest").setup({
+			adapters = adapters,
+			discovery = {
+				enabled = false,
+			},
+			icons = {
+				passed = "✅",
+				failed = "❎",
+				running = "🔃",
+				skipped = "🔲",
+			},
+		})
+	end,
+	init = function()
+		require("which-key").register({
+			["<leader>t"] = {
+				name = "Test",
 
-	nnoremap("<leader>te", function()
-		require("neotest").summary.toggle()
-	end, "<silent>", "Test: Toggle explorer")
-
-	nnoremap("<leader>tK", function()
-		require("neotest").output.open()
-	end, "<silent>", "Test: Show output")
-
-	nnoremap("<leader>td", function()
-		require("neotest").run.run({ strategy = "dap" })
-	end, "<silent>", "Test: Debug nearest test")
-
-	nnoremap("<leader>ts", function()
-		require("neotest").run.stop()
-	end, "<silent>", "Test: Stop nearest test")
-
-	nnoremap("<leader>ta", function()
-		require("neotest").run.attach()
-	end, "<silent>", "Test: Attach nearest test")
-end
-
-M.plugins = function(use)
-	use({
-		"nvim-neotest/neotest",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
-
-			-- Adapters
-			"haydenmeade/neotest-jest",
-		},
-		config = function()
-			require("neotest").setup({
-				discovery = {
-					enabled = false,
+				t = {
+					require("neotest").run.run,
+					"Nearest test",
 				},
-				adapters = {
-					require("neotest-jest"),
+				f = {
+					function()
+						require("neotest").run.run(vim.fn.expand("%"))
+					end,
+					"Current file",
 				},
-				icons = {
-					passed = "✅",
-					failed = "❎",
-					running = "🔃",
-					skipped = "🔲",
+				r = {
+					require("neotest").run.run_last,
+					"Rerun test",
 				},
-			})
-		end,
-	})
-end
-
-return M
+				e = {
+					function()
+						require("neotest").summary.toggle()
+					end,
+					"Toggle explorer",
+				},
+				K = {
+					require("neotest").output.open,
+					"Show output",
+				},
+				d = {
+					function()
+						require("neotest").run.run({ strategy = "dap" })
+					end,
+					"Debug nearest test",
+				},
+				s = {
+					require("neotest").run.stop,
+					"Stop nearest test",
+				},
+				a = {
+					require("neotest").run.attach,
+					"Attach nearest test",
+				},
+			},
+		})
+	end,
+}

@@ -1,13 +1,4 @@
 return function(opts)
-	local on_attach = opts.on_attach
-
-	-- Disable builtin formatting in favor of null-ls
-	opts.on_attach = function(client, bufnr)
-		require("twoslash-queries").attach(client, bufnr)
-		on_attach(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-	end
-
 	opts.handlers = {
 		["textDocument/definition"] = function(err, result, method, ...)
 			if vim.tbl_islist(result) and #result > 1 then
@@ -20,5 +11,5 @@ return function(opts)
 		end,
 	}
 
-	return opts
+	require("lspconfig").tsserver.setup(opts)
 end

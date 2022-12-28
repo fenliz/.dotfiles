@@ -6,7 +6,7 @@ return function(opts)
 				path = vim.split(package.path, ":"),
 			},
 			diagnostics = {
-				globals = { "vim", "nnoremap", "vnoremap", "inoremap", "tnoremap" },
+				globals = { "vim" },
 			},
 			workspace = {
 				library = {
@@ -16,4 +16,6 @@ return function(opts)
 			},
 		},
 	}
+
+	require("lspconfig").sumneko_lua.setup(opts)
 end

@@ -1,52 +1,31 @@
-local M = {}
+vim.g.mapleader = " "
 
-M.mappings = function()
-	require("user.modules.code-completion").mappings()
-	require("user.modules.file-explorer").mappings()
-	require("user.modules.fuzzy-finder").mappings()
-	require("user.modules.language-servers").mappings()
-	require("user.modules.note-taking").mappings()
-	require("user.modules.task-runner").mappings()
-	require("user.modules.terminal").mappings()
-	require("user.modules.test-runner").mappings()
-	require("user.modules.text-editor").mappings()
-	require("user.modules.version-control").mappings()
+require("user.options")
+require("user.keymaps")
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+-- Clone plugin manager repository
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--single-branch",
+		"git@github.com:folke/lazy.nvim.git",
+		lazypath,
+	})
 end
+vim.opt.runtimepath:prepend(lazypath)
 
-M.setup = function()
-	vim.g.mapleader = " "
+-- Setup plugin manager
+require("lazy").setup("user.modules", {
+	defaults = {
+		lazy = true,
+	},
+	install = {
+		colorscheme = { "catppuccin" },
+	},
+})
 
-	require("user.modules.code-completion").options()
-	require("user.modules.statusline").options()
-	require("user.modules.text-editor").options()
-
-	require("user.packer")(function(use)
-		use({
-			"klen/nvim-config-local",
-			config = function()
-				require("config-local").setup()
-			end,
-		})
-
-		require("user.modules.code-completion").plugins(use)
-		require("user.modules.debugging").plugins(use)
-		require("user.modules.file-explorer").plugins(use)
-		require("user.modules.fuzzy-finder").plugins(use)
-		require("user.modules.http-client").plugins(use)
-		require("user.modules.keymappings").plugins(use)
-		require("user.modules.language-servers").plugins(use)
-		require("user.modules.navigation").plugins(use)
-		require("user.modules.note-taking").plugins(use)
-		require("user.modules.notifications").plugins(use)
-		require("user.modules.statusline").plugins(use)
-		require("user.modules.task-runner").plugins(use)
-		require("user.modules.terminal").plugins(use)
-		require("user.modules.test-runner").plugins(use)
-		require("user.modules.text-editor").plugins(use)
-		require("user.modules.treesitter").plugins(use)
-		require("user.modules.version-control").plugins(use)
-		require("user.modules.visuals").plugins(use)
-	end)
-end
-
-return M
+vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>")
