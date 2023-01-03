@@ -1,6 +1,5 @@
 return {
 	"nvim-neotest/neotest",
-	keys = "<leader>t",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
@@ -9,6 +8,43 @@ return {
 		-- Adapters
 		"haydenmeade/neotest-jest",
 		"marilari88/neotest-vitest",
+	},
+	keys = {
+		{
+			"<leader>tt",
+			function()
+				require("neotest").run.run()
+			end,
+			desc = "Test: Nearest test",
+		},
+		{
+			"<leader>tf",
+			function()
+				require("neotest").run.run(vim.fn.expand("%"))
+			end,
+			desc = "Test: Current file",
+		},
+		{
+			"<leader>tl",
+			function()
+				require("neotest").run.run_last()
+			end,
+			desc = "Test: Rerun last",
+		},
+		{
+			"<leader>te",
+			function()
+				require("neotest").summary.toggle()
+			end,
+			desc = "Test: Toggle summary",
+		},
+		{
+			"<leader>tK",
+			function()
+				require("neotest").output.open()
+			end,
+			desc = "Test: Show output",
+		},
 	},
 	config = function()
 		local npm_executable_exists = function(name)
@@ -37,52 +73,6 @@ return {
 				failed = "❎",
 				running = "🔃",
 				skipped = "🔲",
-			},
-		})
-	end,
-	init = function()
-		require("which-key").register({
-			["<leader>t"] = {
-				name = "Test",
-
-				t = {
-					require("neotest").run.run,
-					"Nearest test",
-				},
-				f = {
-					function()
-						require("neotest").run.run(vim.fn.expand("%"))
-					end,
-					"Current file",
-				},
-				r = {
-					require("neotest").run.run_last,
-					"Rerun test",
-				},
-				e = {
-					function()
-						require("neotest").summary.toggle()
-					end,
-					"Toggle explorer",
-				},
-				K = {
-					require("neotest").output.open,
-					"Show output",
-				},
-				d = {
-					function()
-						require("neotest").run.run({ strategy = "dap" })
-					end,
-					"Debug nearest test",
-				},
-				s = {
-					require("neotest").run.stop,
-					"Stop nearest test",
-				},
-				a = {
-					require("neotest").run.attach,
-					"Attach nearest test",
-				},
 			},
 		})
 	end,

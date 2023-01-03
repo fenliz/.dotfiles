@@ -8,23 +8,18 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
+		keys = {
+			{ "<leader>ee", "<cmd>NeoTreeReveal<cr>", desc = "Explorer: Open" },
+			{ "<leader>ec", "<cmd>NeoTreeClose<cr>", desc = "Explorer: Close" },
+		},
 		config = function()
 			require("neo-tree").setup({
 				window = {
 					mappings = {
 						["l"] = "open",
 						["h"] = "close_node",
-					},
-				},
-			})
-		end,
-		init = function()
-			require("which-key").register({
-				["<leader>e"] = {
-					name = "Explorer",
-					e = {
-						"<cmd>NeoTreeRevealToggle<cr>",
-						"Toggle explorer",
+						["<C-x>"] = "open_split",
+						["<C-v>"] = "open_vsplit",
 					},
 				},
 			})

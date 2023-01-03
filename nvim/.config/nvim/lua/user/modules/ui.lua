@@ -17,55 +17,29 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
-		keys = "<leader>x",
+		keys = {
+			{ "<leader>xx", "<cmd>TroubleToggle<cr>", desc = "Trouble: Toggle" },
+			{ "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble: Workspace" },
+			{ "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble: Document" },
+			{ "<leader>xl", "<cmd>TroubleToggle loclist<cr>", desc = "Trouble: Loclist" },
+			{ "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble: Quickfix" },
+			{
+				"<leader>xn",
+				function()
+					require("trouble").next({ skip_groups = true, jump = true })
+				end,
+				desc = "Trouble: Next item",
+			},
+			{
+				"<leader>xp",
+				function()
+					require("trouble").previous({ skip_groups = true, jump = true })
+				end,
+				desc = "Trouble: Previous item",
+			},
+		},
 		config = function()
 			require("trouble").setup()
-		end,
-		init = function()
-			require("which-key").register({
-				["<leader>x"] = {
-					name = "Trouble",
-
-					x = {
-						"<cmd>TroubleToggle<cr>",
-						"Toggle",
-					},
-					w = {
-						"<cmd>TroubleToggle workspace_diagnostics<cr>",
-						"Workspace diagnostics",
-					},
-					d = {
-						"<cmd>TroubleToggle document_diagnostics<cr>",
-						"Document diagnostics",
-					},
-					q = {
-						"<cmd>TroubleToggle quickfix<cr>",
-						"Quickfix list",
-					},
-					l = {
-						"<cmd>TroubleToggle loclist<cr>",
-						"Location list",
-					},
-					n = {
-						function()
-							require("trouble").next({
-								skip_groups = true,
-								jump = true,
-							})
-						end,
-						"Next item",
-					},
-					p = {
-						function()
-							require("trouble").previous({
-								skip_groups = true,
-								jump = true,
-							})
-						end,
-						"Previous item",
-					},
-				},
-			})
 		end,
 	},
 	{

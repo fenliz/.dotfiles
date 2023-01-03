@@ -19,9 +19,10 @@ return {
 	},
 	{
 		"jackMort/ChatGPT.nvim",
-		cmd = "ChatGPT",
 		enabled = vim.env.OPENAI_API_KEY ~= nil,
-		keys = "<leader>fa",
+		keys = {
+			{ "<leader>fa", "<cmd>ChatGPT<cr>", desc = "ChatGPT" },
+		},
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 			"nvim-lua/plenary.nvim",
@@ -29,15 +30,6 @@ return {
 		},
 		config = function()
 			require("chatgpt").setup()
-
-			require("which-key").register({
-				["<leader>f"] = {
-					a = {
-						"<cmd>ChatGPT<cr>",
-						"ChatGPT",
-					},
-				},
-			})
 		end,
 	},
 }

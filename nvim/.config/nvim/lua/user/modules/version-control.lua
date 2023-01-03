@@ -2,36 +2,33 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufReadPre",
+		keys = {
+			{
+				"ä",
+				function()
+					require("gitsigns").next_hunk()
+				end,
+			},
+			{
+				"ö",
+				function()
+					require("gitsigns").prev_hunk()
+				end,
+			},
+		},
 		config = function()
 			require("gitsigns").setup({
 				current_line_blame = true,
 			})
 		end,
-		init = function()
-			vim.keymap.set("n", "ä", function()
-				require("gitsigns").next_hunk()
-			end)
-			vim.keymap.set("n", "ö", function()
-				require("gitsigns").prev_hunk()
-			end)
-		end,
 	},
 	{
 		"sindrets/diffview.nvim",
-		cmd = { "DiffviewFileHistory" },
+		keys = {
+			{ "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "Git: File History" },
+		},
 		config = function()
 			require("diffview").setup()
-		end,
-		init = function()
-			require("which-key").register({
-				["<leader>g"] = {
-					name = "Git",
-					h = {
-						"<cmd>DiffviewFileHistory %<cr>",
-						"File history",
-					},
-				},
-			})
 		end,
 	},
 	{

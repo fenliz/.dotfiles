@@ -1,9 +1,176 @@
+local rg_opts = {
+	additional_args = {
+		"--color=never",
+		"--no-heading",
+		"--with-filename",
+		"--line-number",
+		"--column",
+		"--smart-case",
+		"--trim",
+	},
+}
+if vim.fn.getcwd() == vim.env.DOTFILES then
+	table.insert(rg_opts.additional_args, "--hidden")
+end
+
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		lazy = false,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+		},
+		keys = {
+			{
+				"<leader>fs",
+				function()
+					require("telescope.builtin").live_grep(rg_opts)
+				end,
+				desc = "Find: Text",
+			},
+			{
+				"<leader>fw",
+				function()
+					require("telescope.builtin").grep_string(rg_opts)
+				end,
+				desc = "Find: Text (Current Word)",
+			},
+			{
+				"<leader>ff",
+				function()
+					require("telescope.builtin").find_files()
+				end,
+				desc = "Find: File",
+			},
+			{
+				"<leader>fF",
+				function()
+					require("telescope.builtin").find_files({ search_file = vim.fn.expand("<cword>") })
+				end,
+				desc = "Find: File (Current Word)",
+			},
+			{
+				"<leader>fd",
+				function()
+					require("telescope.builtin").find_files({
+						prompt_title = "<Dotfiles>",
+						cwd = vim.env.DOTFILES,
+						hidden = true,
+					})
+				end,
+				desc = "Find: File (.dotfiles)",
+			},
+			{
+				"<leader>fr",
+				function()
+					require("telescope.builtin").oldfiles()
+				end,
+				desc = "Find: File (Recent)",
+			},
+			{
+				"<leader>fb",
+				function()
+					require("telescope.builtin").buffers()
+				end,
+				desc = "Find: Buffer",
+			},
+			{
+				"<leader>fh",
+				function()
+					require("telescope.builtin").help_tags()
+				end,
+				desc = "Find: Help",
+			},
+			{
+				"<leader>fm",
+				function()
+					require("telescope.builtin").marks()
+				end,
+				desc = "Find: Mark",
+			},
+			{
+				"<leader>ft",
+				function()
+					require("telescope.builtin").tags()
+				end,
+				desc = "Find: Tag",
+			},
+			{
+				"<leader>fo",
+				function()
+					require("telescope.builtin").vim_options()
+				end,
+				desc = "Find: Option",
+			},
+			{
+				"<leader>fc",
+				function()
+					require("telescope.builtin").commands()
+				end,
+				desc = "Find: Command",
+			},
+			{
+				"<leader>fk",
+				function()
+					require("telescope.builtin").keymaps()
+				end,
+				desc = "Find: Keymap",
+			},
+			{
+				"<leader>fl",
+				function()
+					require("telescope.builtin").resume()
+				end,
+				desc = "Find: Resume last search",
+			},
+			{
+				"<leader>fS",
+				function()
+					require("telescope.builtin").search_history()
+				end,
+				desc = "Find: Search History",
+			},
+			{
+				"<leader>fC",
+				function()
+					require("telescope.builtin").command_history()
+				end,
+				desc = "Find: Command History",
+			},
+			{
+				"<leader>gs",
+				function()
+					require("telescope.builtin").git_status()
+				end,
+				desc = "Git: Status",
+			},
+			{
+				"<leader>gb",
+				function()
+					require("telescope.builtin").git_branches()
+				end,
+				desc = "Git: Branches",
+			},
+			{
+				"<leader>gc",
+				function()
+					require("telescope.builtin").git_commits()
+				end,
+				desc = "Git: Commits",
+			},
+			{
+				"<leader>gs",
+				function()
+					require("telescope.builtin").git_stash()
+				end,
+				desc = "Git: Stashes",
+			},
+			{
+				"<C-p>",
+				function()
+					require("telescope.builtin").find_files()
+				end,
+				desc = "Find: File",
+			},
 		},
 		config = function()
 			require("telescope").setup({
@@ -26,136 +193,19 @@ return {
 				},
 			})
 		end,
-		init = function()
-			local rg_opts = {
-				additional_args = {
-					"--color=never",
-					"--no-heading",
-					"--with-filename",
-					"--line-number",
-					"--column",
-					"--smart-case",
-					"--trim",
-				},
-			}
-			if vim.fn.getcwd() == vim.env.DOTFILES then
-				table.insert(rg_opts.additional_args, "--hidden")
-			end
-
-			local telescope = require("telescope.builtin")
-
-			vim.keymap.set("n", "<C-p>", telescope.find_files)
-
-			require("which-key").register({
-				["<leader>f"] = {
-					name = "Find",
-
-					-- Text
-					s = {
-						function()
-							telescope.live_grep(rg_opts)
-						end,
-						"Text",
-					},
-					w = {
-						function()
-							telescope.grep_string(rg_opts)
-						end,
-						"Text - Current Word",
-					},
-
-					-- Files
-					f = {
-						telescope.find_files,
-						"File",
-					},
-					F = {
-						function()
-							telescope.find_files({
-								search_file = vim.fn.expand("<cword>"),
-							})
-						end,
-						"File - Current Word",
-					},
-					d = {
-						function()
-							telescope.find_files({
-								prompt_title = "<Dotfiles>",
-								cwd = vim.env.DOTFILES,
-								hidden = true,
-							})
-						end,
-						"File - .dotfiles",
-					},
-					r = {
-						telescope.oldfiles,
-						"File - Recent",
-					},
-
-					-- Registers
-					b = {
-						telescope.buffers,
-						"Buffer",
-					},
-					m = {
-						telescope.marks,
-						"Mark",
-					},
-
-					-- History
-					l = {
-						telescope.resume,
-						"Resume last search",
-					},
-					S = {
-						telescope.search_history,
-						"History - Search",
-					},
-					c = {
-						telescope.command_history,
-						"History - Command",
-					},
-					y = {
-						require("telescope").extensions.neoclip.default,
-						"History - Clipboard",
-					},
-
-					-- VIM
-					h = {
-						telescope.help_tags,
-						"Help",
-					},
-					o = {
-						telescope.vim_options,
-						"Option",
-					},
-				},
-				["<leader>g"] = {
-					name = "Git",
-
-					s = {
-						telescope.git_status,
-						"Status",
-					},
-					b = {
-						telescope.git_branches,
-						"Branches",
-					},
-					c = {
-						telescope.git_commits,
-						"Commits",
-					},
-					S = {
-						telescope.git_stash,
-						"Stashes",
-					},
-				},
-			})
-		end,
 	},
 	{
 		"AckslD/nvim-neoclip.lua",
 		event = "BufWritePre",
+		keys = {
+			{
+				"<leader>fy",
+				function()
+					require("telescope").extensions.neoclip.default()
+				end,
+				desc = "Find: Clipboard History",
+			},
+		},
 		config = function()
 			require("neoclip").setup({
 				keys = {

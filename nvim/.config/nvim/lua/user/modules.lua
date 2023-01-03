@@ -4,6 +4,14 @@ return {
 		lazy = false,
 		config = function()
 			require("which-key").setup()
+			require("which-key").register({
+				["<leader>x"] = { name = "Trouble" },
+				["<leader>t"] = { name = "Test" },
+				["<leader>f"] = { name = "Find" },
+				["<leader>g"] = { name = "Git" },
+				["<leader>e"] = { name = "Explorer" },
+				["<leader>n"] = { name = "Notes" },
+			})
 		end,
 	},
 	{
