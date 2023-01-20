@@ -1,11 +1,13 @@
+local highlight_augroup = vim.api.nvim_create_augroup("LspHightlight", { clear = true })
+local formatting_augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+
 return function(client, bufnr)
 	local opts = { silent = true, buffer = bufnr }
 
 	-- Highlight
 	if client.supports_method("textDocument/documentHighlight") then
-		local highlight_augroup = vim.api.nvim_create_augroup("LspHightlight", {
-			clear = true,
-		})
+		vim.api.nvim_clear_autocmds({ group = highlight_augroup, buffer = bufnr })
+
 		vim.api.nvim_create_autocmd("CursorHold", {
 			group = highlight_augroup,
 			buffer = bufnr,
@@ -20,18 +22,18 @@ return function(client, bufnr)
 
 	-- Formatting
 	if client.supports_method("textDocument/formatting") then
-		local formatting_augroup = vim.api.nvim_create_augroup("LspFormatting", {
-			clear = true,
-		})
+		vim.api.nvim_clear_autocmds({ group = formatting_augroup, buffer = bufnr })
+
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = formatting_augroup,
 			buffer = bufnr,
 			callback = function()
-				vim.lsp.buf.format()
+				vim.lsp.buf.format({ bufnr = bufnr })
 			end,
 		})
+
 		vim.keymap.set("n", "gf", function()
-			vim.lsp.buf.format({ timeout_ms = 2000 })
+			vim.lsp.buf.format({ timeout_ms = 2000, bufnr = bufnr })
 		end, opts)
 	end
 
