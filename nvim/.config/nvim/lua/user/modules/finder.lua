@@ -158,7 +158,7 @@ return {
 				desc = "Git: Commits",
 			},
 			{
-				"<leader>gs",
+				"<leader>gS",
 				function()
 					require("telescope.builtin").git_stash()
 				end,
