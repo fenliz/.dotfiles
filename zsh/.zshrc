@@ -1,5 +1,5 @@
-[[ ! -f $HOME/.zshrc.local ]] || source $HOME/.zshrc.local
 source $HOME/.zsh_profile
+[[ ! -f $HOME/.zshrc.local ]] || source $HOME/.zshrc.local
 
 # Starship
 eval "$(starship init zsh)" 
