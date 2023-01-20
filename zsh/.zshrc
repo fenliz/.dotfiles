@@ -9,15 +9,16 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+setopt ignoreeof
 
 # Auto-complete
-source ~/third_party/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $THIRD_PARTY/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # forgit
-[ -f ~/third_party/forgit/forgit.plugin.zsh ] && source ~/third_party/forgit/forgit.plugin.zsh
+[ -f $THIRD_PARTY/forgit/forgit.plugin.zsh ] && source $THIRD_PARTY/forgit/forgit.plugin.zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
