@@ -73,6 +73,7 @@ return {
 
 					builtins.formatting.prettierd,
 					builtins.formatting.stylua,
+					builtins.formatting.eslint_d,
 				},
 				on_attach = require("user.modules.language-servers.on_attach"),
 			})
