@@ -57,16 +57,16 @@ return {
 			preselect = cmp.PreselectMode.None,
 			sources = cmp.config.sources({
 				-- Dependencies
-				{ name = "npm", keyword_length = 4 },
+				{ name = "npm",                    keyword_length = 4 },
 
 				-- LSP
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "path" },
-				{ name = "nvim_lsp", keyword_length = 3 },
-				{ name = "nvim_lua", keyword_length = 3 },
+				{ name = "nvim_lsp",               keyword_length = 3 },
+				{ name = "nvim_lua",               keyword_length = 3 },
 
 				-- Snippets
-				{ name = "luasnip", keyword_length = 2 },
+				{ name = "luasnip",                keyword_length = 2 },
 
 				-- Misc
 				{ name = "emoji" },
@@ -77,14 +77,14 @@ return {
 					item.kind = string.format("%s", kind_icons[item.kind])
 
 					item.menu = ({
-						path = "[Path]",
-						copilot = "[AI]",
-						nvim_lsp = "[LSP]",
-						nvim_lua = "[Lua]",
-						luasnip = "[Snip]",
-						emoji = "[Emoji]",
-						buffer = "[Buf]",
-					})[entry.source.name]
+								path = "[Path]",
+								copilot = "[AI]",
+								nvim_lsp = "[LSP]",
+								nvim_lua = "[Lua]",
+								luasnip = "[Snip]",
+								emoji = "[Emoji]",
+								buffer = "[Buf]",
+							})[entry.source.name]
 
 					return item
 				end,
@@ -92,14 +92,14 @@ return {
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 				["<C-n>"] = cmp.mapping.select_next_item(),
-				["<C-d>"] = cmp.mapping.scroll_docs(-4),
+				["<C-d>"] = cmp.mapping.scroll_docs( -4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-c>"] = cmp.mapping({
 					i = cmp.mapping.abort(),
 					c = cmp.mapping.close(),
 				}),
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<CR>"] = cmp.mapping.confirm({ select = false }),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if luasnip.expand_or_jumpable() then
 						luasnip.expand_or_jump()
@@ -108,8 +108,8 @@ return {
 					end
 				end, { "i", "s" }),
 				["<S-Tab>"] = cmp.mapping(function(fallback)
-					if luasnip.jumpable(-1) then
-						luasnip.jump(-1)
+					if luasnip.jumpable( -1) then
+						luasnip.jump( -1)
 					else
 						fallback()
 					end

@@ -15,7 +15,7 @@ return {
 			require("mason").setup()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"sumneko_lua",
+					"lua_ls",
 					"tsserver",
 					"graphql",
 					"tailwindcss",
@@ -44,7 +44,7 @@ return {
 				function(server_name)
 					require("lspconfig")[server_name].setup(opts)
 				end,
-				["sumneko_lua"] = function()
+				["lua_ls"] = function()
 					require("user.modules.language-servers.lua")(opts)
 				end,
 				["tsserver"] = function()

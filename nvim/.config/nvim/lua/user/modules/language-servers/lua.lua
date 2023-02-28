@@ -17,5 +17,5 @@ return function(opts)
 		},
 	}
 
-	require("lspconfig").sumneko_lua.setup(opts)
+	require("lspconfig").lua_ls.setup(opts)
 end
