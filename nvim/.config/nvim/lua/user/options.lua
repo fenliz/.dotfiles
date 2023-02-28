@@ -59,6 +59,3 @@ vim.o.wildmode = "longest:full,full"
 -- Popup
 vim.o.pumblend = 10
 vim.o.pumheight = 10
-
--- Prompts
-vim.o.shortmess:append({ C = true })
