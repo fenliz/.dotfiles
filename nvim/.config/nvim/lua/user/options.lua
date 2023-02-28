@@ -11,6 +11,8 @@ vim.o.expandtab = false
 vim.o.hlsearch = false
 vim.o.incsearch = true
 vim.o.smartcase = true
+vim.o.grepformat = "%f:%l:%c:%m"
+vim.o.grepprg = "rg --vimgrep"
 
 -- Text
 vim.o.wrap = false
@@ -30,13 +32,16 @@ vim.o.signcolumn = "yes"
 -- Splits
 vim.o.splitright = true
 vim.o.splitbelow = true
+vim.o.splitkeep = "screen"
 
 -- Scrolling
 vim.o.scrolloff = 8
+vim.o.sidescrolloff = 8
 vim.o.cursorline = true
 
 -- Buffers
 vim.o.hidden = true
+vim.o.clipboard = "unnamedplus"
 
 -- Files
 vim.o.swapfile = false
@@ -44,9 +49,16 @@ vim.o.backup = false
 vim.o.writebackup = false
 vim.o.undofile = true
 vim.o.undodir = vim.fn.expand("~/.vim/undodir")
+vim.o.autowrite = true
+vim.o.updatetime = 200
 
 -- Code completion
 vim.o.completeopt = "menu,menuone,noselect,noinsert"
+vim.o.wildmode = "longest:full,full"
 
--- Faster completion
-vim.o.updatetime = 300
+-- Popup
+vim.o.pumblend = 10
+vim.o.pumheight = 10
+
+-- Prompts
+vim.o.shortmess:append({ C = true })
