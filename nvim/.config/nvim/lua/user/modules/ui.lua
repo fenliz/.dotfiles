@@ -5,13 +5,83 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		event = "BufReadPre",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
 		config = function()
 			require("dressing").setup({
-				-- Avoid code actions getting cached since it
-				-- interferes with telescope.resume()
-				telescope = require("telescope.themes").get_dropdown({
-					cache_picker = false,
-				}),
+				select = {
+					get_config = function(opts)
+						if opts.kind == "codeaction" then
+							-- Avoid code actions getting cached since it
+							-- interferes with telescope.resume()
+							return {
+								telescope = require("telescope.themes").get_cursor({
+									cache_picker = false,
+								}),
+							}
+						end
+					end,
+				},
+			})
+		end,
+	},
+	{
+		"folke/noice.nvim",
+		event = "BufReadPre",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+		config = function()
+			require("noice").setup({
+				lsp = {
+					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
+						["cmp.entry.get_documentation"] = true,
+					},
+				},
+				-- you can enable a preset for easier configuration
+				presets = {
+					bottom_search = true, -- use a classic bottom cmdline for search
+					command_palette = true, -- position the cmdline and popupmenu together
+					long_message_to_split = true, -- long messages will be sent to a split
+					inc_rename = false, -- enables an input dialog for inc-rename.nvim
+					lsp_doc_border = false, -- add a border to hover docs and signature help
+				},
+				view = {
+					cmdline_popup = {
+						position = {
+							row = 5,
+							col = "50%",
+						},
+						size = {
+							width = 60,
+							height = "auto",
+						},
+					},
+					popupmenu = {
+						relative = "editor",
+						position = {
+							row = 8,
+							col = "50%",
+						},
+						size = {
+							width = 60,
+							height = 10,
+						},
+						border = {
+							style = "rounded",
+							padding = { 0, 1 },
+						},
+						win_options = {
+							winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+						},
+					},
+				},
 			})
 		end,
 	},
