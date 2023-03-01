@@ -28,7 +28,12 @@ return function(client, bufnr)
 			group = formatting_augroup,
 			buffer = bufnr,
 			callback = function()
-				vim.lsp.buf.format({ bufnr = bufnr })
+				vim.lsp.buf.format({
+					bufnr = bufnr,
+					filter = function(formatter)
+						return formatter.name == "null-ls"
+					end,
+				})
 			end,
 		})
 
