@@ -7,20 +7,6 @@ return {
 		"ggandor/lightspeed.nvim",
 		event = "BufReadPre",
 	},
-	-- {
-	-- 	"karb94/neoscroll.nvim",
-	-- 	keys = { "<C-u>", "<C-d>", "gg", "G" },
-	-- 	config = function()
-	-- 		require("neoscroll").setup({
-	-- 			mappings = { "<C-u>", "<C-d>" },
-	-- 		})
-	--
-	-- 		require("neoscroll.config").set_mappings({
-	-- 			["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "80" } },
-	-- 			["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "80" } },
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"ofirgall/open.nvim",
 		keys = "gx",
