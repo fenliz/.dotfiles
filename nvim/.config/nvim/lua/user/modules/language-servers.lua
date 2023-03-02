@@ -18,7 +18,6 @@ return {
 					"lua_ls",
 					"tsserver",
 					"graphql",
-					"tailwindcss",
 				},
 			})
 			require("mason-tool-installer").setup({
