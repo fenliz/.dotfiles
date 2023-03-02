@@ -99,4 +99,12 @@ return {
 			})
 		end,
 	},
+	{
+		"barrett-ruth/import-cost.nvim",
+		event = "BufReadPre",
+		build = "sh install.sh yarn",
+		config = function()
+			require("import-cost").setup()
+		end,
+	},
 }
