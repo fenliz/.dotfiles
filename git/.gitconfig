@@ -11,11 +11,21 @@
 	email = cfh91@hotmail.com
 [core]
 	editor = vim
+	pager = delta
 [rebase]
 	autoStash = true
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
 [pull]
 	rebase = true
 [fetch]
 	prune = true
 [push]
 	default = current
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	light = false
