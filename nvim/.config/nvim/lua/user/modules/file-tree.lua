@@ -1,5 +1,24 @@
 return {
 	{
+		"s1n7ax/nvim-window-picker",
+		lazy = false,
+		config = function()
+			require("window-picker").setup({
+				autoselect_one = true,
+				include_current = false,
+				show_prompt = false,
+				use_winbar = "always",
+				other_win_hl_color = "#8839ef",
+				filter_rules = {
+					bo = {
+						filetype = { "neo-tree", "neo-tree-popup", "notify" },
+						buftype = { "terminal", "quickfix" },
+					},
+				},
+			})
+		end,
+	},
+	{
 		"nvim-neo-tree/neo-tree.nvim",
 		lazy = false,
 		branch = "v2.x",
@@ -16,10 +35,16 @@ return {
 			require("neo-tree").setup({
 				window = {
 					mappings = {
-						["l"] = "open",
+						["l"] = "open_with_window_picker",
 						["h"] = "close_node",
-						["<C-x>"] = "open_split",
-						["<C-v>"] = "open_vsplit",
+						["<C-x>"] = "split_with_window_picker",
+						["<C-v>"] = "vsplit_with_window_picker",
+					},
+				},
+				filesystem = {
+					filtered_items = {
+						hide_dotfiles = vim.fn.getcwd() ~= vim.env.DOTFILES,
+						hide_hidden = vim.fn.getcwd() ~= vim.env.DOTFILES,
 					},
 				},
 			})
