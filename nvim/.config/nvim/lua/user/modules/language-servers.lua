@@ -11,6 +11,10 @@ return {
 			-- Language specific
 			"b0o/SchemaStore.nvim", -- JSON
 		},
+		keys = {
+			{ "<leader>m", "<cmd>Mason<cr>", desc = "Language servers" },
+			{ "<leader>M", "<cmd>LspRestart<cr>", desc = "Restart language servers" },
+		},
 		config = function()
 			require("mason").setup()
 			require("mason-lspconfig").setup({
