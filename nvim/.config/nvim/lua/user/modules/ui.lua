@@ -9,11 +9,17 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 return {
 	{
+		"rcarriga/nvim-notify",
+		event = "BufReadPre",
+		config = function()
+			require("notify").setup()
+		end,
+	},
+	{
 		"stevearc/dressing.nvim",
 		event = "BufReadPre",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
 		},
 		config = function()
 			require("dressing").setup({
@@ -38,7 +44,6 @@ return {
 		event = "BufReadPre",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
 		},
 		config = function()
 			require("noice").setup({

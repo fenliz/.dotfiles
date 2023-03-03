@@ -116,6 +116,12 @@ return {
 				desc = "Find: Keymap",
 			},
 			{
+				"<leader>fn",
+				function()
+					require("telescope").extensions.notify.notify()
+				end,
+			},
+			{
 				"<leader>fl",
 				function()
 					require("telescope.builtin").resume()
