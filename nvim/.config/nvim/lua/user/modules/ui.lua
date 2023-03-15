@@ -2,12 +2,10 @@ return {
 	{
 		"rcarriga/nvim-notify",
 		event = "BufReadPre",
-		config = function()
-			require("notify").setup({
-				render = "compact",
-				top_down = false,
-			})
-		end,
+		opts = {
+			render = "compact",
+			top_down = false,
+		},
 	},
 	{
 		"stevearc/dressing.nvim",
@@ -15,23 +13,21 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
-		config = function()
-			require("dressing").setup({
-				select = {
-					get_config = function(opts)
-						if opts.kind == "codeaction" then
-							-- Avoid code actions getting cached since it
-							-- interferes with telescope.resume()
-							return {
-								telescope = require("telescope.themes").get_cursor({
-									cache_picker = false,
-								}),
-							}
-						end
-					end,
-				},
-			})
-		end,
+		opts = {
+			select = {
+				get_config = function(opts)
+					if opts.kind == "codeaction" then
+						-- Avoid code actions getting cached since it
+						-- interferes with telescope.resume()
+						return {
+							telescope = require("telescope.themes").get_cursor({
+								cache_picker = false,
+							}),
+						}
+					end
+				end,
+			},
+		},
 	},
 	{
 		"folke/noice.nvim",
@@ -39,54 +35,52 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
-		config = function()
-			require("noice").setup({
-				lsp = {
-					override = {
-						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.stylize_markdown"] = true,
-						["cmp.entry.get_documentation"] = true,
+		opts = {
+			lsp = {
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+			},
+			presets = {
+				bottom_search = false,
+				command_palette = true,
+				long_message_to_split = true,
+				inc_rename = false,
+				lsp_doc_border = true,
+			},
+			view = {
+				cmdline_popup = {
+					position = {
+						row = 5,
+						col = "50%",
+					},
+					size = {
+						width = 60,
+						height = "auto",
 					},
 				},
-				presets = {
-					bottom_search = false,
-					command_palette = true,
-					long_message_to_split = true,
-					inc_rename = false,
-					lsp_doc_border = true,
-				},
-				view = {
-					cmdline_popup = {
-						position = {
-							row = 5,
-							col = "50%",
-						},
-						size = {
-							width = 60,
-							height = "auto",
-						},
+				popupmenu = {
+					relative = "editor",
+					position = {
+						row = 8,
+						col = "50%",
 					},
-					popupmenu = {
-						relative = "editor",
-						position = {
-							row = 8,
-							col = "50%",
-						},
-						size = {
-							width = 60,
-							height = 10,
-						},
-						border = {
-							style = "rounded",
-							padding = { 0, 1 },
-						},
-						win_options = {
-							winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-						},
+					size = {
+						width = 60,
+						height = 10,
+					},
+					border = {
+						style = "rounded",
+						padding = { 0, 1 },
+					},
+					win_options = {
+						winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
 					},
 				},
-			})
-		end,
+			},
+		},
 	},
 	{
 		"folke/trouble.nvim",
@@ -111,16 +105,10 @@ return {
 				desc = "Trouble: Previous item",
 			},
 		},
-		config = function()
-			require("trouble").setup()
-		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",
-		config = function()
-			require("indent_blankline").setup()
-		end,
 	},
 	{
 		"feline-nvim/feline.nvim",
