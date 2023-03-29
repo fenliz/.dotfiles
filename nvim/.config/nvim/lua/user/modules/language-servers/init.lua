@@ -8,8 +8,8 @@ return {
 			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
 
-			-- Language specific
 			"b0o/SchemaStore.nvim", -- JSON
+			"jose-elias-alvarez/typescript.nvim", -- TypeScript
 		},
 		keys = {
 			{ "<leader>m", "<cmd>Mason<cr>", desc = "Language servers" },
@@ -17,13 +17,14 @@ return {
 		},
 		config = function()
 			require("mason").setup()
+
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
 					"tsserver",
-					"graphql",
 				},
 			})
+
 			require("mason-tool-installer").setup({
 				ensure_installed = {
 					"eslint_d",
@@ -33,28 +34,45 @@ return {
 				auto_update = true,
 			})
 
+			vim.keymap.set("n", "Ä", vim.diagnostic.goto_next)
+			vim.keymap.set("n", "Ö", vim.diagnostic.goto_prev)
+
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			capabilities.textDocument.colorProvider = { dynamicRegistration = true }
+
 			local opts = {
-				capabilities = require("cmp_nvim_lsp").default_capabilities(
-					vim.lsp.protocol.make_client_capabilities()
-				),
-				on_attach = require("user.modules.language-servers.on_attach"),
-			}
-			opts.capabilities.textDocument.colorProvider = {
-				dynamicRegistration = true,
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					if client.supports_method("textDocument/documentHighlight") then
+						require("user.modules.language-servers.highlight").setup_highlight_on_hover(bufnr)
+					end
+
+					if client.supports_method("textDocument/formatting") then
+						require("user.modules.language-servers.formatting").setup_format_on_save(bufnr)
+					end
+
+					if client.server_capabilities.colorProvider then
+						require("document-color").buf_attach(bufnr)
+					end
+
+					require("user.modules.language-servers.keymaps").set_lsp_keymaps(client, bufnr)
+				end,
 			}
 
+			local language_handlers = require("user.modules.language-servers.languages")
+
 			require("mason-lspconfig").setup_handlers({
-				function(server_name)
-					require("lspconfig")[server_name].setup(opts)
-				end,
 				["lua_ls"] = function()
-					require("user.modules.language-servers.lua")(opts)
+					language_handlers.lua.setup(opts)
 				end,
 				["tsserver"] = function()
-					require("user.modules.language-servers.typescript")(opts)
+					language_handlers.typescript.setup(opts)
 				end,
 				["jsonls"] = function()
-					require("user.modules.language-servers.json")(opts)
+					language_handlers.json.setup(opts)
+				end,
+				function(server_name)
+					require("lspconfig")[server_name].setup(opts)
 				end,
 			})
 		end,
@@ -67,8 +85,9 @@ return {
 
 			require("null-ls").setup({
 				sources = {
-					builtins.code_actions.gitsigns,
 					builtins.code_actions.eslint_d,
+					require("typescript.extensions.null-ls.code-actions"),
+					builtins.code_actions.gitsigns,
 
 					builtins.diagnostics.eslint_d,
 					builtins.diagnostics.jsonlint,
@@ -78,28 +97,6 @@ return {
 					builtins.formatting.stylua,
 					builtins.formatting.eslint_d,
 				},
-				on_attach = require("user.modules.language-servers.on_attach"),
-			})
-		end,
-	},
-	{
-		"mrshmllow/document-color.nvim",
-		event = "BufReadPre",
-		config = function()
-			require("document-color").setup({})
-		end,
-	},
-	{
-		"norcalli/nvim-colorizer.lua",
-		event = "BufReadPre",
-		config = function()
-			require("colorizer").setup({
-				"*",
-				-- Disable in filetypes covered by document-color.nvim
-				"!css",
-				"!html",
-				"!tsx",
-				"!dart",
 			})
 		end,
 	},
@@ -107,8 +104,6 @@ return {
 		"barrett-ruth/import-cost.nvim",
 		event = "BufReadPre",
 		build = "sh install.sh yarn",
-		config = function()
-			require("import-cost").setup()
-		end,
+		setup = true,
 	},
 }

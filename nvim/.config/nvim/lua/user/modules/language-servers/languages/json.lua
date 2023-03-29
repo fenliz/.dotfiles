@@ -1,4 +1,6 @@
-return function(opts)
+local M = {}
+
+M.setup = function(opts)
 	opts.settings = {
 		json = {
 			schemas = require("schemastore").json.schemas(),
@@ -10,3 +12,5 @@ return function(opts)
 
 	require("lspconfig").jsonls.setup(opts)
 end
+
+return M

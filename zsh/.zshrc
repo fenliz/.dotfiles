@@ -17,8 +17,8 @@ source $THIRD_PARTY/zsh-autosuggestions/zsh-autosuggestions.zsh
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# forgit
-[ -f $THIRD_PARTY/forgit/forgit.plugin.zsh ] && source $THIRD_PARTY/forgit/forgit.plugin.zsh
+# Copilot
+eval "$(github-copilot-cli alias -- "$0")"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

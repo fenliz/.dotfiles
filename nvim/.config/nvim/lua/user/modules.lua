@@ -9,7 +9,7 @@ return {
 				["<leader>t"] = { name = "Test" },
 				["<leader>f"] = { name = "Find" },
 				["<leader>g"] = { name = "Git" },
-				["<leader>e"] = { name = "Explorer" },
+				["<leader>e"] = { name = "File tree" },
 				["<leader>n"] = { name = "Notes" },
 			})
 		end,

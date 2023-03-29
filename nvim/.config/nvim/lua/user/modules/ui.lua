@@ -4,7 +4,6 @@ return {
 		event = "BufReadPre",
 		opts = {
 			render = "compact",
-			top_down = false,
 		},
 	},
 	{
@@ -17,9 +16,9 @@ return {
 			select = {
 				get_config = function(opts)
 					if opts.kind == "codeaction" then
-						-- Avoid code actions getting cached since it
-						-- interferes with telescope.resume()
 						return {
+							-- Avoid code actions getting cached since it
+							-- interferes with telescope.resume()
 							telescope = require("telescope.themes").get_cursor({
 								cache_picker = false,
 							}),
@@ -35,6 +34,15 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
+		keys = {
+			{
+				"<leader>fn",
+				function()
+					require("noice").cmd("history")
+				end,
+				desc = "Find: Notification",
+			},
+		},
 		opts = {
 			lsp = {
 				override = {
@@ -46,38 +54,21 @@ return {
 			presets = {
 				bottom_search = false,
 				command_palette = true,
-				long_message_to_split = true,
+				long_message_to_split = false,
 				inc_rename = false,
 				lsp_doc_border = true,
 			},
-			view = {
-				cmdline_popup = {
-					position = {
-						row = 5,
-						col = "50%",
+			routes = {
+				{
+					filter = {
+						any = {
+							-- "written" messages when saving a file
+							{ event = "msg_show", kind = "", find = "written" },
+							-- When hover doesn't have any information (mostly for multiple LSPs)
+							{ find = "No information available" },
+						},
 					},
-					size = {
-						width = 60,
-						height = "auto",
-					},
-				},
-				popupmenu = {
-					relative = "editor",
-					position = {
-						row = 8,
-						col = "50%",
-					},
-					size = {
-						width = 60,
-						height = 10,
-					},
-					border = {
-						style = "rounded",
-						padding = { 0, 1 },
-					},
-					win_options = {
-						winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-					},
+					opts = { skip = true },
 				},
 			},
 		},
@@ -105,22 +96,11 @@ return {
 				desc = "Trouble: Previous item",
 			},
 		},
+		config = true,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",
-	},
-	{
-		"feline-nvim/feline.nvim",
-		event = "BufReadPre",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("feline").setup({
-				components = require("catppuccin.groups.integrations.feline").get(),
-			})
-			require("feline").winbar.setup()
-		end,
+		config = true,
 	},
 }

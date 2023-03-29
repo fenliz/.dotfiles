@@ -46,7 +46,7 @@ return {
 			desc = "Test: Show output",
 		},
 	},
-	config = function()
+	opts = function()
 		local npm_executable_exists = function(name)
 			local path = vim.fn.getcwd() .. "/node_modules/.bin/" .. name
 			local ok = vim.loop.fs_stat(path)
@@ -63,7 +63,8 @@ return {
 			table.insert(adapters, require("neotest-vitest"))
 		end
 
-		require("neotest").setup({
+		return {
+
 			adapters = adapters,
 			discovery = {
 				enabled = false,
@@ -74,6 +75,6 @@ return {
 				running = "🔃",
 				skipped = "🔲",
 			},
-		})
+		}
 	end,
 }

@@ -28,26 +28,24 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 		keys = {
-			{ "<leader>ee", "<cmd>NeoTreeReveal<cr>", desc = "Explorer: Open" },
-			{ "<leader>ec", "<cmd>NeoTreeClose<cr>", desc = "Explorer: Close" },
+			{ "<leader>ee", "<cmd>NeoTreeReveal<cr>", desc = "File tree: Open" },
+			{ "<leader>ec", "<cmd>NeoTreeClose<cr>", desc = "File tree: Close" },
 		},
-		config = function()
-			require("neo-tree").setup({
-				window = {
-					mappings = {
-						["l"] = "open_with_window_picker",
-						["h"] = "close_node",
-						["<C-x>"] = "split_with_window_picker",
-						["<C-v>"] = "vsplit_with_window_picker",
-					},
+		opts = {
+			window = {
+				mappings = {
+					["l"] = "open_with_window_picker",
+					["h"] = "close_node",
+					["<C-x>"] = "split_with_window_picker",
+					["<C-v>"] = "vsplit_with_window_picker",
 				},
-				filesystem = {
-					filtered_items = {
-						hide_dotfiles = vim.fn.getcwd() ~= vim.env.DOTFILES,
-						hide_hidden = vim.fn.getcwd() ~= vim.env.DOTFILES,
-					},
+			},
+			filesystem = {
+				filtered_items = {
+					hide_dotfiles = vim.fn.getcwd() ~= vim.env.DOTFILES,
+					hide_hidden = vim.fn.getcwd() ~= vim.env.DOTFILES,
 				},
-			})
-		end,
+			},
+		},
 	},
 }

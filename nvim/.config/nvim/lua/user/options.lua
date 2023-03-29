@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- Indentation
 vim.o.smarttab = true
 vim.o.smartindent = true

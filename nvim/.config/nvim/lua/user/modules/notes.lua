@@ -5,7 +5,5 @@ return {
 		{ "<leader>nn", "<cmd>MindOpenMain<cr>", desc = "Notes: Project" },
 		{ "<leader>ng", "<cmd>MindOpenProject<cr>", desc = "Notes: Global" },
 	},
-	config = function()
-		require("mind").setup()
-	end,
+	config = true,
 }

@@ -1,11 +1,8 @@
-vim.g.mapleader = " "
-
 require("user.options")
 require("user.keymaps")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
--- Clone plugin manager repository
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -18,7 +15,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
--- Setup plugin manager
 require("lazy").setup("user.modules", {
 	defaults = {
 		lazy = true,

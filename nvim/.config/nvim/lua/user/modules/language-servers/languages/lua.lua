@@ -1,4 +1,6 @@
-return function(opts)
+local M = {}
+
+M.setup = function(opts)
 	opts.settings = {
 		Lua = {
 			runtime = {
@@ -19,3 +21,5 @@ return function(opts)
 
 	require("lspconfig").lua_ls.setup(opts)
 end
+
+return M

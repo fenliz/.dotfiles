@@ -11,9 +11,11 @@ return {
 		keys = {
 			{ "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "Git: File History" },
 		},
+		config = true,
 	},
 	{
 		"akinsho/git-conflict.nvim",
 		event = "BufReadPre",
+		config = true,
 	},
 }
