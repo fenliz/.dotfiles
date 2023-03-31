@@ -179,6 +179,10 @@ return {
 						i = { ["<C-t>"] = require("trouble.providers.telescope").open_with_trouble },
 						n = { ["<C-t>"] = require("trouble.providers.telescope").open_with_trouble },
 					},
+					preview = {
+						timeout = 250,
+						filesize_limit = 5,
+					},
 				},
 				pickers = {
 					find_files = {
