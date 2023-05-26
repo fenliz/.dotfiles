@@ -16,9 +16,9 @@ M.set_lsp_keymaps = function(client, buffer)
 		vim.keymap.set("n", "gR", vim.lsp.buf.references, opts)
 	end
 
-	if client.supports_method("textDocument/definition") then
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	end
+	-- if client.supports_method("textDocument/definition") then
+	-- 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	-- end
 
 	if client.supports_method("textDocument/declaration") then
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)

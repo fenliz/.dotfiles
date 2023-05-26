@@ -106,4 +106,17 @@ return {
 		build = "sh install.sh yarn",
 		setup = true,
 	},
+	{
+		"KostkaBrukowa/definition-or-references.nvim",
+		even = "BufReadPre",
+		keys = {
+			{
+				"gd",
+				function()
+					require("definition-or-references").definition_or_references()
+				end,
+				desc = "Go to definition",
+			},
+		},
+	},
 }
