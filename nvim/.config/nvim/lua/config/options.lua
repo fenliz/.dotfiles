@@ -12,3 +12,5 @@ vim.filetype.add({
     ["*.envrc"] = "sh",
   },
 })
+
+vim.api.nvim_set_hl(0, "FlashLabel", { bg = "#fc9867", fg = "#000000" })
