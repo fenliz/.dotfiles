@@ -17,7 +17,7 @@ return {
         {
           event = "file_opened",
           handler = function()
-            require("neo-tree").close_all()
+            require("neo-tree.command").execute({ action = "close" })
           end,
         },
       },
@@ -25,8 +25,10 @@ return {
   },
   {
     "s1n7ax/nvim-window-picker",
+    tag = "v1.5",
     opts = {
       show_prompt = false,
+      autoselect_one = true,
       other_win_hl_color = "#ffd866",
       fg_color = "#19181a",
     },
