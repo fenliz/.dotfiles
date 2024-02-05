@@ -1,16 +1,8 @@
--- Default options: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 
-vim.o.mouse = "" -- Disable mouse support
-vim.o.scrolloff = 8 -- Keep 8 lines above and below cursor
-vim.o.completeopt = "menu,menuone,noselect,noinsert" -- Completion options
+-- Always keep 8 lines above and below the cursor
+vim.opt.scrolloff = 8
 
-vim.filetype.add({
-  filename = {
-    [".env"] = "sh",
-    [".envrc"] = "sh",
-    ["*.env"] = "sh",
-    ["*.envrc"] = "sh",
-  },
-})
-
-vim.api.nvim_set_hl(0, "FlashLabel", { bg = "#fc9867", fg = "#000000" })
+-- Autocomplete options
+vim.opt.completeopt = "menu,menuone,noselect,noinsert"

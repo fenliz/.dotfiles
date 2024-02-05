@@ -1,3 +1,5 @@
+# Catppuccin
+
 dark2="#19181a"
 dark1="#221f22"
 background="#2d2a2e"  # white
@@ -7,6 +9,7 @@ accent2="#fc9867"     # orange
 accent3="#ffd866"     # yellow
 accent4="#a9dc76"     # green
 accent5="#78dce8"     # blue
+
 accent6="#ab9df2"     # purple
 dimmed1="#c1c0c0"
 dimmed2="#939293"
