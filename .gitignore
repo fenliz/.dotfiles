@@ -2,3 +2,4 @@ packer_compiled.lua
 .ccls-cache/
 node_modules/
 tmux/.local
+*.kdl
