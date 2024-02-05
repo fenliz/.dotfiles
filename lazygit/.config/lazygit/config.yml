@@ -1,6 +1,10 @@
 gui:
   scrollHeight: 8
   scrollOffMargin: 8
+  nerdFontsVersion: "3"
+  showRandomTip: false
+  showCommandLog: false
+  showBottomLine: false
 
   theme:
     activeBorderColor:
