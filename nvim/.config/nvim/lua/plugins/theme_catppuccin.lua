@@ -6,12 +6,13 @@ return {
     opts = {
       integrations = {
         mason = true,
-        neotree = true,
         neotest = true,
+        neotree = true,
         noice = true,
         notify = true,
-        window_picker = true,
+        octo = true,
         which_key = true,
+        window_picker = true,
       },
     },
   },

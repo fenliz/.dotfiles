@@ -22,6 +22,13 @@ keybinds clear-defaults=true {
 
     bind "Alt [" { PreviousSwapLayout; }
     bind "Alt ]" { NextSwapLayout; }
+
+    bind "Tab" { ToggleTab; }
+
+    bind "Ctrl l" { MoveFocusOrTab "Right"; }
+    bind "Ctrl h" { MoveFocusOrTab "Left"; }
+    bind "Ctrl j" { MoveFocus "Down"; }
+    bind "Ctrl k" { MoveFocus "Up"; }
   }
 
 

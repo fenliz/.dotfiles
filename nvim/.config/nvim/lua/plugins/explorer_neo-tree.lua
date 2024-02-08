@@ -19,6 +19,7 @@ return {
         mappings = {
           ["<c-cr>"] = "open_vsplit",
           ["l"] = "open_with_window_picker",
+          ["h"] = "close_node",
         },
       },
     },
@@ -33,15 +34,6 @@ return {
       filter_rules = {
         autoselect_one = true,
       },
-      -- highlights = {
-      --   statusline = {
-      --     unfocused = {
-      --       fg = "#19181a",
-      --       bg = "#a9dc76",
-      --       bold = true,
-      --     },
-      --   },
-      -- },
     },
   },
 }
