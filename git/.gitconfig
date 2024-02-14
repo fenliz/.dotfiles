@@ -29,3 +29,5 @@
 [delta]
 	navigate = true
 	light = false
+[rerere] # Reuse recorded resolution of conflicted merges
+	enabled = true
