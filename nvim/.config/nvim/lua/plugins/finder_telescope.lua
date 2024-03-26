@@ -13,12 +13,5 @@ return {
         },
       },
     },
-    keys = {
-      {
-        "<leader>fl",
-        builtin.resume,
-        desc = "Resume last search",
-      },
-    },
   },
 }

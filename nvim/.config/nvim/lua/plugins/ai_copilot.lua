@@ -2,7 +2,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = "InsertEnter",
+    lazy = false,
     opts = {
       suggestion = {
         auto_trigger = true,
@@ -15,33 +15,29 @@ return {
     },
   },
   {
-    "jellydn/CopilotChat.nvim",
-    dependencies = { "zbirenbaum/copilot.lua" }, -- Or { "github/copilot.vim" }
-    opts = {
-      show_help = "yes", -- Show help text for CopilotChatInPlace, default: yes
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" },
+      { "nvim-lua/plenary.nvim" },
     },
-    build = function()
-      -- Needs these commands:
-      -- pip install python-dotenv requests pynvim==0.5.0 prompt-toolkit
-      -- pip install tiktoken (optional for displaying prompt token counts)
-      vim.notify("Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim.")
-    end,
-    event = "VeryLazy",
+    lazy = false,
     keys = {
-      { "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-      { "<leader>cct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
       {
-        "<leader>ccv",
-        ":CopilotChatVisual",
-        mode = "x",
-        desc = "CopilotChat - Open in vertical split",
+        "<leader>aq",
+        function()
+          local input = vim.fn.input("Quick chat: ")
+          if input ~= "" then
+            require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+          end
+        end,
+        desc = "Quick chat",
       },
-      {
-        "<leader>ccx",
-        ":CopilotChatInPlace<cr>",
-        mode = "x",
-        desc = "CopilotChat - Run in-place code",
-      },
+      { "<leader>ae", "<cmd>CopilotChatExplain<cr>", desc = "Explain code" },
+      { "<leader>at", "<cmd>CopilotChatTests<cr>", desc = "Generate tests" },
+      { "<leader>af", "<cmd>CopilotChatFix<cr>", desc = "Fix issue" },
+      { "<leader>ao", "<cmd>CopilotChatOptimize<cr>", desc = "Optimize Code" },
+      { "<leader>ad", "<cmd>CopilotChatFixDiagnostic<cr>", desc = "Fix diagnostics" },
     },
   },
 }
