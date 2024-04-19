@@ -13,6 +13,6 @@ source ~/zshrc/env.zsh
 source ~/zshrc/nvm.zsh
 source ~/zshrc/zellij.zsh
 source ~/zshrc/bun.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
