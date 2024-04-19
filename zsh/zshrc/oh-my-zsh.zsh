@@ -21,11 +21,9 @@ ZSH_THEME="robbyrussell"
 plugins=(
   copyfile
   copypath
-  git
   macos
   sudo
   web-search
-  you-should-use
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
