@@ -1,3 +1,8 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
--- Add any additional autocmds here
+vim.api.nvim_create_augroup("filetype", {})
+
+-- Treat .swiftinterface files as Swift files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.swiftinterface",
+  group = "filetype",
+  command = "setlocal filetype=swift",
+})
