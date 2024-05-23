@@ -2,6 +2,10 @@
 #
 [window]
 option_as_alt = "Both"
+
+[shell]
+program = "/bin/zsh"
+args = ["--login"]
 #
 ###############
 # Keybindings

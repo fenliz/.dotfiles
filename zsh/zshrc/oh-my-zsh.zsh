@@ -19,11 +19,6 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 plugins=(
-  copyfile
-  copypath
-  macos
-  sudo
-  web-search
   zsh-autosuggestions
   zsh-syntax-highlighting
 )

@@ -11,7 +11,6 @@ source ~/zshrc/oh-my-zsh.zsh
 source ~/zshrc/alias.zsh
 source ~/zshrc/env.zsh
 source ~/zshrc/nvm.zsh
-source ~/zshrc/zellij.zsh
 source ~/zshrc/bun.zsh
 
 eval "$(fzf --zsh)"
