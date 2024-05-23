@@ -22,6 +22,9 @@ return {
       { "nvim-lua/plenary.nvim" },
     },
     lazy = false,
+    opts = {
+      debug = true,
+    },
     keys = {
       {
         "<leader>aq",
@@ -33,11 +36,10 @@ return {
         end,
         desc = "Quick chat",
       },
-      { "<leader>ae", "<cmd>CopilotChatExplain<cr>", desc = "Explain code" },
-      { "<leader>at", "<cmd>CopilotChatTests<cr>", desc = "Generate tests" },
-      { "<leader>af", "<cmd>CopilotChatFix<cr>", desc = "Fix issue" },
-      { "<leader>ao", "<cmd>CopilotChatOptimize<cr>", desc = "Optimize Code" },
-      { "<leader>ad", "<cmd>CopilotChatFixDiagnostic<cr>", desc = "Fix diagnostics" },
+      { "<leader>ae", "<cmd>CopilotChatExplain<cr>", mode = "x", desc = "Explain code" },
+      { "<leader>at", "<cmd>CopilotChatTests<cr>", mode = "x", desc = "Generate tests" },
+      { "<leader>ar", "<cmd>CopilotChatReview<cr>", mode = "x", desc = "Review code" },
+      { "<leader>af", "<cmd>CopilotChatFixDiagnostic", mode = "x", desc = "Fix diagnostic" },
     },
   },
 }
