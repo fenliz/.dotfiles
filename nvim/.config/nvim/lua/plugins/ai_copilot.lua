@@ -22,9 +22,6 @@ return {
       { "nvim-lua/plenary.nvim" },
     },
     lazy = false,
-    opts = {
-      debug = true,
-    },
     keys = {
       {
         "<leader>aq",
