@@ -49,6 +49,12 @@ return {
         desc = "Prompts",
       },
       {
+        "<leader>aa",
+        ":lua require('CopilotChat.integrations.telescope').pick(require('CopilotChat.actions').prompt_actions({selection = require('CopilotChat.select').visual}))<CR>",
+        mode = "x",
+        desc = "Prompts",
+      },
+      {
         "<leader>aq",
         function()
           local input = vim.fn.input("Quick chat: ")
