@@ -5,7 +5,7 @@ option_as_alt = "Both"
 
 [shell]
 program = "/bin/zsh"
-args = ["--login"]
+args = ["-l"]
 #
 ###############
 # Keybindings
@@ -57,6 +57,18 @@ mods = "Control"
 chars = "\u001B[47;5u"
 key = "/"
 mods = "Control"
+
+# Remove new tab binding
+[[keyboard.bindings]]
+key = "T"
+mods = "Command"
+action = "None"
+
+# Remove new window binding
+[[keyboard.bindings]]
+key = "N"
+mods = "Command"
+action = "None"
 
 #
 ###############
