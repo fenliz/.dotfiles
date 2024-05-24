@@ -63,6 +63,7 @@
   "trouble.nvim": { "branch": "main", "commit": "a8264a65a0b894832ea642844f5b7c30112c458f" },
   "ts-comments.nvim": { "branch": "main", "commit": "dd4424521aa097d012290126eb08f8b6bf52146a" },
   "ts-error-translator.nvim": { "branch": "main", "commit": "11ae55b28bde02663b5f983f59b0e3fd9c4e845b" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "c600cf10db1bf933aab9e357158bf9b202ecf99b" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
   "window-picker": { "branch": "main", "commit": "41cfaa428577c53552200a404ae9b3a0b5719706" },
   "yanky.nvim": { "branch": "main", "commit": "8756d19923ad871eb95f543a8a98c026b4a8494f" }
