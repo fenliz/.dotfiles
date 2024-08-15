@@ -113,6 +113,7 @@ alt-e = 'workspace E' # Misc 3
 alt-b = 'workspace B' # Browser
 alt-c = 'workspace C' # Chat
 alt-m = 'workspace M' # Music
+alt-n = 'workspace N' # Notes
 alt-g = 'workspace G' # Gaming
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -122,6 +123,7 @@ alt-shift-e = 'move-node-to-workspace E' # Misc 3
 alt-shift-b = 'move-node-to-workspace B' # Browser
 alt-shift-c = 'move-node-to-workspace C' # Chat
 alt-shift-m = 'move-node-to-workspace M' # Music
+alt-shift-n = 'move-node-to-workspace N' # Notes
 alt-shift-g = 'move-node-to-workspace G' # Gaming
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
