@@ -17,22 +17,17 @@ return {
       window = {
 
         mappings = {
-          ["<c-cr>"] = "open_vsplit",
-          ["l"] = "open_with_window_picker",
+          ["l"] = "open",
           ["h"] = "close_node",
         },
       },
-    },
-  },
-  {
-    "s1n7ax/nvim-window-picker",
-    name = "window-picker",
-    event = "VeryLazy",
-    version = "2.*",
-    opts = {
-      show_prompt = false,
-      filter_rules = {
-        autoselect_one = true,
+      event_handlers = {
+        {
+          event = "file_open_requested",
+          handler = function()
+            require("neo-tree.command").execute({ action = "close" })
+          end,
+        },
       },
     },
   },
