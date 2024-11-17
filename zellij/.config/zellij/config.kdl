@@ -3,11 +3,6 @@ keybinds clear-defaults=true {
         bind "Ctrl a" { SwitchToMode "normal"; }
     }
     normal {
-        bind "Ctrl h" { MoveFocus "left"; }
-        bind "Ctrl j" { MoveFocus "down"; }
-        bind "Ctrl k" { MoveFocus "up"; }
-        bind "Ctrl l" { MoveFocus "right"; }
-
         bind "f" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
@@ -162,7 +157,12 @@ keybinds clear-defaults=true {
         bind "Alt o" { MoveTab "right"; }
     }
     shared_except "locked" "renametab" "renamepane" {
-        bind "Ctrl g" { SwitchToMode "locked"; }
+        bind "Ctrl h" { MoveFocus "left"; SwitchToMode "locked"; }
+        bind "Ctrl j" { MoveFocus "down"; SwitchToMode "locked"; }
+        bind "Ctrl k" { MoveFocus "up"; SwitchToMode "locked"; }
+        bind "Ctrl l" { MoveFocus "right"; SwitchToMode "locked"; }
+
+        bind "Ctrl a" { SwitchToMode "locked"; }
         bind "Ctrl q" { Quit; }
     }
     shared_except "locked" "entersearch" {
@@ -421,4 +421,4 @@ default_mode "locked"
 // (Requires restart)
 // Default: true (if the host terminal supports it)
 // 
-// support_kitty_keyboard_protocol false
+support_kitty_keyboard_protocol false
