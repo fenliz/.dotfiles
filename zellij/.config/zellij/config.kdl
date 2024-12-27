@@ -3,6 +3,8 @@ keybinds clear-defaults=true {
         bind "Ctrl a" { SwitchToMode "normal"; }
     }
     normal {
+        bind "tab" { ToggleTab; }
+
         bind "f" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true

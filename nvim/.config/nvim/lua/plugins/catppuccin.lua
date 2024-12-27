@@ -7,9 +7,7 @@ return {
       integrations = {
         mason = true,
         neotest = true,
-        neotree = true,
         noice = true,
-        notify = true,
         octo = true,
         which_key = true,
         window_picker = true,

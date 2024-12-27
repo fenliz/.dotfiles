@@ -11,22 +11,10 @@ return {
           hide_hidden = not cwd_in_dotfiles,
         },
       },
-      follow_current_file = {
-        enabled = true,
-      },
       window = {
-
         mappings = {
           ["l"] = "open",
           ["h"] = "close_node",
-        },
-      },
-      event_handlers = {
-        {
-          event = "file_open_requested",
-          handler = function()
-            require("neo-tree.command").execute({ action = "close" })
-          end,
         },
       },
     },
