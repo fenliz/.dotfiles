@@ -4,5 +4,4 @@ window-decoration = false
 background-opacity = 0.95
 
 font-family = JetbrainsMono Nerd Font
-font-thicken = true
 font-synthetic-style = true
