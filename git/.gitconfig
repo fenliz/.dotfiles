@@ -14,7 +14,7 @@
 	name = Forsberg Hedberg Charlie
 	email = cfh91@hotmail.com
 [core]
-	editor = vim
+	editor = nvim
 	pager = delta
 [rebase]
 	autoStash = true
@@ -37,6 +37,9 @@
 	enabled = true
 
 [delta]
+	features = catppuccin-mocha
+
+[delta "catppuccin-mocha"]
 	blame-palette = "#1e1e2e #181825 #11111b #313244 #45475a"
 	commit-decoration-style = "#6c7086" bold box ul
 	dark = true

@@ -1,6 +1,7 @@
 # General
 alias cat='bat'
 alias cd='z'
+alias y="yazi"
 
 alias ..='cd ..'
 alias ...='cd ../..'
