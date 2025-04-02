@@ -1,0 +1,80 @@
+{
+	// -- Cursor --
+	"update.releaseTrack": "prerelease",
+
+	// -- Editor --
+	"breadcrumbs.enabled": false,
+	"editor.cursorSurroundingLines": 8,
+	"editor.folding": false,
+	"editor.formatOnSave": true,
+	"editor.scrollbar.horizontal": "hidden",
+	"editor.scrollbar.vertical": "hidden",
+	"editor.smoothScrolling": true,
+	"editor.tabSize": 2,
+	"editor.cursorSmoothCaretAnimation": "on",
+
+	// -- Font --
+	"editor.fontLigatures": true,
+	"editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+
+	// -- Files --
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true,
+
+	// -- Search --
+	"search.smartCase": true,
+
+	// -- Projects --
+	"projectManager.git.baseFolders": ["~/Development"],
+
+	// -- Formatting --
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"prettier.enable": true,
+	"prettier.useTabs": true,
+
+	// -- Terminal --
+	"terminal.integrated.smoothScrolling": true,
+
+	// -- Vim --
+	"extensions.experimental.affinity": { "vscodevim.vim": 1 },
+	"vim.highlightedyank.enable": true,
+	"vim.leader": "<Space>",
+	"vim.showmodename": false,
+	"vim.sneak": true,
+	"vim.easymotion": true,
+	"vim.normalModeKeyBindings": [
+		// Search
+		{ "before": ["leader", "f", "f"], "commands": ["find-it-faster.findFiles"] },
+		{ "before": ["leader", "s", "g"], "commands": ["find-it-faster.findWithinFiles"] },
+
+		// Save
+		{ "before": ["leader", "w"], "commands": ["workbench.action.files.save"] }
+
+		// LSP
+		{ "before": ["leader", "c", "r"], "commands": ["editor.action.rename"]}
+
+	],
+	"vim.visualModeKeyBindings": [
+		// Indentation
+		{ "before": ["<"], "commands": ["editor.action.outdentLines"] },
+		{ "before": [">"], "commands": ["editor.action.indentLines"] },
+
+		// Move lines
+		{ "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+		{ "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+	],
+
+	// -- Git --
+	"git.autofetch": true,
+
+	// -- Workbench --
+	"workbench.colorTheme": "Catppuccin Mocha",
+	"workbench.editor.limit.enabled": true,
+	"workbench.list.smoothScrolling": true,
+	"workbench.sideBar.location": "right",
+	"workbench.statusBar.visible": false,
+	"workbench.editor.tabActionCloseVisibility": false,
+	"workbench.editor.decorations.badges": false
+
+	// Other
+}
