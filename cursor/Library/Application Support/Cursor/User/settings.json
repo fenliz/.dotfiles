@@ -34,6 +34,9 @@
 
 	// -- Terminal --
 	"terminal.integrated.smoothScrolling": true,
+	"terminal.integrated.enablePersistentSessions": true,
+	"terminal.integrated.gpuAcceleration": "on",
+	"terminal.integrated.tabs.title": "${shellPromptInput}",
 
 	// -- Vim --
 	"extensions.experimental.affinity": { "vscodevim.vim": 1 },

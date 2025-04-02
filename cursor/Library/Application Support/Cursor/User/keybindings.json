@@ -3,12 +3,12 @@
 	{
 		"key": "shift+h",
 		"command": "workbench.action.previousEditorInGroup",
-		"when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+		"when": "editorFocus && vim.active && vim.mode == 'Normal'"
 	},
 	{
 		"key": "shift+l",
 		"command": "workbench.action.nextEditorInGroup",
-		"when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+		"when": "editorFocus && vim.active && vim.mode == 'Normal'"
 	},
 
 	// -- Navigation --
@@ -213,6 +213,10 @@
 		},
 		"when": "searchResultListFocused"
 	},
+	{
+		"key": "cmd+o",
+		"command": "projectManager.listProjects"
+	}
 
 	// -- Removals
 	{
