@@ -12,6 +12,7 @@
 	"editor.smoothScrolling": true,
 	"editor.tabSize": 2,
 	"editor.cursorSmoothCaretAnimation": "on",
+	"editor.showFoldingControls": "never",
 
 	// -- Font --
 	"editor.fontLigatures": true,
@@ -76,8 +77,9 @@
 	"workbench.list.smoothScrolling": true,
 	"workbench.sideBar.location": "right",
 	"workbench.statusBar.visible": false,
-	"workbench.editor.tabActionCloseVisibility": false,
-	"workbench.editor.decorations.badges": false
+	"workbench.editor.showTabs": "none",
+	"workbench.layoutControl.enabled": false,
+	"workbench.editor.editorActionsLocation": "hidden"
 
 	// Other
 }
