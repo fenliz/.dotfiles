@@ -207,11 +207,6 @@
 		"when": "editorFocus && editorIsOpen && findWidgetVisible"
 	},
 	{
-		"key": "cmd+shift+f",
-		"command": "editor.action.startFindReplaceAction",
-		"when": "editorFocus && editorIsOpen"
-	},
-	{
 		"key": "ctrl+n",
 		"command": "editor.action.nextMatchFindAction",
 		"when": "editorFocus && findWidgetVisible"
