@@ -1,6 +1,7 @@
 {
-	// -- Cursor --
+	// -- General --
 	"update.releaseTrack": "prerelease",
+	"extensions.ignoreRecommendations": true,
 
 	// -- Editor --
 	"breadcrumbs.enabled": false,
@@ -14,6 +15,9 @@
 	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.showFoldingControls": "never",
 
+	// -- Accessibility --
+	"accessibility.signalOptions.volume": 0,
+
 	// -- Font --
 	"editor.fontLigatures": true,
 	"editor.fontFamily": "JetBrainsMono Nerd Font Mono",
@@ -26,7 +30,7 @@
 	"search.smartCase": true,
 
 	// -- Projects --
-	"projectManager.git.baseFolders": ["~/Development"],
+	"projectManager.git.baseFolders": ["~/Development", "~/.dotfiles"],
 
 	// -- Formatting --
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -79,7 +83,5 @@
 	"workbench.statusBar.visible": false,
 	"workbench.editor.showTabs": "none",
 	"workbench.layoutControl.enabled": false,
-	"workbench.editor.editorActionsLocation": "hidden"
-
-	// Other
+	"workbench.editor.editorActionsLocation": "hidden",
 }

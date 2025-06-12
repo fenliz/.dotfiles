@@ -5,3 +5,7 @@ background-opacity = 0.95
 
 font-family = JetbrainsMono Nerd Font
 font-synthetic-style = true
+
+keybind = global:cmd+option+shift+t=toggle_quick_terminal
+quick-terminal-position = left
+quick-terminal-animation-duration = 0.1
