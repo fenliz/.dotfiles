@@ -1,4 +1,10 @@
 {
+	// -- AI
+	"cursor.composer.shouldChimeAfterChatFinishes": true,
+	"cursor.composer.shouldAllowCustomModes": true,
+	"cursor.diffs.useCharacterLevelDiffs": true,
+	"cursor.terminal.usePreviewBox": true,
+
 	// -- General --
 	"update.releaseTrack": "prerelease",
 	"extensions.ignoreRecommendations": true,
@@ -28,14 +34,14 @@
 
 	// -- Search --
 	"search.smartCase": true,
+	"find-it-faster.general.showMaximizedTerminal": true,
+	"find-it-faster.general.restoreFocusTerminal": true,
 
 	// -- Projects --
 	"projectManager.git.baseFolders": ["~/Development", "~/.dotfiles"],
 
 	// -- Formatting --
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"prettier.enable": true,
-	"prettier.useTabs": true,
 
 	// -- Terminal --
 	"terminal.integrated.smoothScrolling": true,
@@ -52,24 +58,51 @@
 	"vim.easymotion": true,
 	"vim.normalModeKeyBindings": [
 		// Search
-		{ "before": ["leader", "f", "f"], "commands": ["find-it-faster.findFiles"] },
-		{ "before": ["leader", "s", "g"], "commands": ["find-it-faster.findWithinFiles"] },
+		{
+			"before": ["leader", "f", "f"],
+			"commands": ["find-it-faster.findFiles"]
+		},
+		{
+			"before": ["leader", "s", "g"],
+			"commands": ["find-it-faster.findWithinFiles"]
+		},
+		{
+			"before": ["leader", "s", "r"],
+			"commands": ["find-it-faster.resumeSearch"]
+		},
 
 		// Save
-		{ "before": ["leader", "w"], "commands": ["workbench.action.files.save"] }
+		{
+			"before": ["leader", "w"],
+			"commands": ["workbench.action.files.save"]
+		},
 
 		// LSP
-		{ "before": ["leader", "c", "r"], "commands": ["editor.action.rename"]}
-
+		{
+			"before": ["leader", "c", "r"],
+			"commands": ["editor.action.rename"]
+		}
 	],
 	"vim.visualModeKeyBindings": [
 		// Indentation
-		{ "before": ["<"], "commands": ["editor.action.outdentLines"] },
-		{ "before": [">"], "commands": ["editor.action.indentLines"] },
+		{
+			"before": ["<"],
+			"commands": ["editor.action.outdentLines"]
+		},
+		{
+			"before": [">"],
+			"commands": ["editor.action.indentLines"]
+		},
 
 		// Move lines
-		{ "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
-		{ "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+		{
+			"before": ["J"],
+			"commands": ["editor.action.moveLinesDownAction"]
+		},
+		{
+			"before": ["K"],
+			"commands": ["editor.action.moveLinesUpAction"]
+		}
 	],
 
 	// -- Git --
@@ -84,4 +117,7 @@
 	"workbench.editor.showTabs": "none",
 	"workbench.layoutControl.enabled": false,
 	"workbench.editor.editorActionsLocation": "hidden",
+
+	// -- Language specifics
+	"css.validate": false
 }

@@ -3,12 +3,12 @@
 	{
 		"key": "shift+h",
 		"command": "workbench.action.previousEditorInGroup",
-		"when": "editorFocus && vim.active && vim.mode == 'Normal'"
+		"when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
 	},
 	{
 		"key": "shift+l",
 		"command": "workbench.action.nextEditorInGroup",
-		"when": "editorFocus && vim.active && vim.mode == 'Normal'"
+		"when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
 	},
 
 	// -- Navigation --
@@ -131,12 +131,12 @@
 		"key": "cmd+5",
 		"command": "workbench.action.terminal.focusAtIndex5",
 		"when": "terminalIsOpen && terminalFocus"
-	}
+	},
 
 	// -- Explorer --
 	{
 		"key": "cmd+e",
-		"command": "workbench.view.explorer",
+		"command": "workbench.view.explorer"
 	},
 	{
 		"key": "enter",
@@ -236,7 +236,7 @@
 	{
 		"key": "cmd+o",
 		"command": "projectManager.listProjects"
-	}
+	},
 
 	// -- Removals
 	{
