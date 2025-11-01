@@ -119,5 +119,6 @@
 	"workbench.editor.editorActionsLocation": "hidden",
 
 	// -- Language specifics
-	"css.validate": false
+	"css.validate": false,
+	"typescript.updateImportsOnFileMove.enabled": "always"
 }

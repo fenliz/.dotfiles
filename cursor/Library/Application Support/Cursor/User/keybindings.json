@@ -140,8 +140,11 @@
 	},
 	{
 		"key": "enter",
-		"command": "explorer.openAndPassFocus",
-		"when": "filesExplorerFocus && !inputFocus"
+		"command": "runCommands",
+		"when": "explorerViewletFocus && filesExplorerFocus && !inputFocus",
+		"args": {
+			"commands": ["list.select", "workbench.action.closeSidebar"]
+		}
 	},
 	{
 		"key": "a",
