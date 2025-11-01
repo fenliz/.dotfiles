@@ -70,6 +70,10 @@
 			"before": ["leader", "s", "r"],
 			"commands": ["find-it-faster.resumeSearch"]
 		},
+		{
+			"before": ["leader", "s", "s"],
+			"commands": ["workbench.action.gotoSymbol"]
+		},
 
 		// Save
 		{
@@ -81,9 +85,31 @@
 		{
 			"before": ["leader", "c", "r"],
 			"commands": ["editor.action.rename"]
+		},
+		{
+			"before": ["leader", "c", "a"],
+			"commands": ["editor.action.codeAction"]
+		},
+		{
+			"before": ["leader", "g", "r"],
+			"commands": ["editor.action.goToReferences"]
+		},
+		{
+			"before": ["leader", "g", "d"],
+			"commands": ["editor.action.revealDefinition"]
 		}
 	],
 	"vim.visualModeKeyBindings": [
+		// Search
+		{
+			"before": ["leader", "f", "f"],
+			"commands": ["find-it-faster.findFiles"]
+		},
+		{
+			"before": ["leader", "s", "g"],
+			"commands": ["find-it-faster.findWithinFiles"]
+		},
+
 		// Indentation
 		{
 			"before": ["<"],
@@ -112,13 +138,14 @@
 	"workbench.colorTheme": "Catppuccin Mocha",
 	"workbench.editor.limit.enabled": true,
 	"workbench.list.smoothScrolling": true,
-	"workbench.sideBar.location": "right",
 	"workbench.statusBar.visible": false,
 	"workbench.editor.showTabs": "none",
 	"workbench.layoutControl.enabled": false,
+	"workbench.activityBar.orientation": "vertical",
 	"workbench.editor.editorActionsLocation": "hidden",
 
 	// -- Language specifics
 	"css.validate": false,
-	"typescript.updateImportsOnFileMove.enabled": "always"
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"workbench.sideBar.location": "right"
 }
