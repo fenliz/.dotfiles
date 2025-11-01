@@ -90,47 +90,47 @@
 	{
 		"key": "cmd+w",
 		"command": "workbench.action.terminal.kill",
-		"when": "terminalIsOpen && terminalFocus"
+		"when": "terminalIsOpen && terminalFocusInAny"
 	},
 	{
 		"key": "cmd+n",
 		"command": "workbench.action.terminal.new",
-		"when": "terminalIsOpen && terminalFocus"
+		"when": "terminalIsOpen && terminalFocusInAny"
 	},
 	{
 		"key": "ctrl+shift+j",
 		"command": "workbench.action.terminal.focusNext",
-		"when": "terminalIsOpen && terminalFocus"
+		"when": "terminalIsOpen && terminalFocusInAny"
 	},
 	{
 		"key": "ctrl+shift+k",
 		"command": "workbench.action.terminal.focusPrevious",
-		"when": "terminalIsOpen && terminalFocus"
+		"when": "terminalIsOpen && terminalFocusInAny"
 	},
 	{
 		"key": "cmd+1",
 		"command": "workbench.action.terminal.focusAtIndex1",
-		"when": "terminalIsOpen && terminalFocus"
+		"when": "terminalIsOpen && terminalFocusInAny"
 	},
 	{
 		"key": "cmd+2",
 		"command": "workbench.action.terminal.focusAtIndex2",
-		"when": "terminalIsOpen && terminalFocus"
+		"when": "terminalIsOpen && terminalFocusInAny"
 	},
 	{
 		"key": "cmd+3",
 		"command": "workbench.action.terminal.focusAtIndex3",
-		"when": "terminalIsOpen && terminalFocus"
+		"when": "terminalIsOpen && terminalFocusInAny"
 	},
 	{
 		"key": "cmd+4",
 		"command": "workbench.action.terminal.focusAtIndex4",
-		"when": "terminalIsOpen && terminalFocus"
+		"when": "terminalIsOpen && terminalFocusInAny"
 	},
 	{
 		"key": "cmd+5",
 		"command": "workbench.action.terminal.focusAtIndex5",
-		"when": "terminalIsOpen && terminalFocus"
+		"when": "terminalIsOpen && terminalFocusInAny"
 	},
 
 	// -- Explorer --
