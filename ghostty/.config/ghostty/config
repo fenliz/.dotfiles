@@ -8,4 +8,5 @@ font-synthetic-style = true
 
 keybind = global:cmd+option+shift+t=toggle_quick_terminal
 quick-terminal-position = left
+quick-terminal-size = 50%
 quick-terminal-animation-duration = 0.1
