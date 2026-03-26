@@ -10,7 +10,6 @@ return {
       },
       picker = {
         hidden = true,
-        ignored = true,
       },
     },
   },
